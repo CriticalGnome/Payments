@@ -15,11 +15,11 @@
 			</c:if>
 			</form>
 			<form action="index.jsp" class="navbar-form navbar-right">
-			<c:if test="${sessionScope.locale == 'locale_ru_RU' or empty sessionScope.locale}" >
-				<button type="submit" name="lang" value="en" class="btn btn-default"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></button>
-			</c:if>
-			<c:if test="${sessionScope.locale == 'locale_en_US'}">
+			<c:if test="${sessionScope.locale == 'locale_en_US' or empty sessionScope.locale}" >
 				<button type="submit" name="lang" value="ru" class="btn btn-default"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></button>
+			</c:if>
+			<c:if test="${sessionScope.locale == 'locale_ru_RU'}">
+				<button type="submit" name="lang" value="en" class="btn btn-default"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></button>
 			</c:if>
 			</form>
 		</div>

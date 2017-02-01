@@ -9,6 +9,9 @@
 <c:if test="${sessionScope.locale == 'locale_ru_RU'}">
     <fmt:setBundle basename="locale_ru_RU" />
 </c:if>
+<c:if test="${param.action == 'logout'}" >
+	<c:remove var="isAuthorized"/>
+</c:if>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
