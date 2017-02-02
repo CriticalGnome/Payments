@@ -1,4 +1,5 @@
-<%@ page import="com.criticalgnome.payments.DBConnection"%>
+<%@page import="com.criticalgnome.payments.dao.UserDAO"%>
+<%@page import="com.criticalgnome.payments.beans.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -11,6 +12,7 @@
 </c:if>
 <c:if test="${param.action == 'logout'}" >
 	<c:remove var="isAuthorized"/>
+	<c:remove var="userID"/>
 </c:if>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,67 +27,38 @@
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
-<%
-	if (request.getParameter("email") != null) {
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		String dbPassword = DBConnection.getPasswordFromDB(email);
-		if (dbPassword == null) {
-%>
+
+<c:if test="${param.action == 'wronglogin'}" >
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<div class="alert alert-warning alert-dismissible fade in"
-				role="alert">
-				<button type="button" class="close" data-dismiss="alert"
-					aria-label="Close">
+			<div class="alert alert-danger alert-dismissible fade in" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<fmt:message key="login.no.user" />
+				<fmt:message key="login.wrong.pass"/>
 			</div>
 		</div>
 	</div>
 </div>
-<%
-	} else {
-			if (dbPassword.equals(password)) {
-				session.setAttribute("isAuthorized", "yes");
-				response.sendRedirect("index.jsp?action=login");
-			} else {
-%>
-<div class="container">
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<div class="alert alert-danger alert-dismissible fade in"
-				role="alert">
-				<button type="button" class="close" data-dismiss="alert"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<fmt:message key="login.wrong.pass" />
-			</div>
-		</div>
-	</div>
-</div>
-<%
-	}
-		}
-	}
-%>
+</c:if>
+
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-			<form action="login.jsp" method="POST">
+			<form action="login" method="POST">
 				<div class="form-group">
-					<label for="loginEmail1"><fmt:message key="login.email" /></label>
-					<input type="email" class="form-control" name="email" placeholder="<fmt:message key="login.email.placeholder" />">
+					<label for="email"><fmt:message key="login.email" /></label>
+					<input type="email" autofocus class="form-control" name="email" placeholder="<fmt:message key="login.email.placeholder" />">
 				</div>
 				<div class="form-group">
-					<label for="loginPassword1"><fmt:message key="login.password" /></label>
+					<label for="password"><fmt:message key="login.password" /></label>
 					<input type="password" class="form-control" name="password" placeholder="<fmt:message key="login.password.placeholder" />">
 				</div>
-				<button type="submit" class="btn btn-default"><fmt:message key="login.button" /></button>
+				<button type="submit" name="submit" name="value" class="btn btn-primary"><fmt:message key="login.button" /></button>
 			</form>
+				<a href="register.jsp"><fmt:message key="register.button" /></a>
 		</div>
 	</div>
 </div>
