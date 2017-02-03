@@ -15,7 +15,7 @@
     <fmt:setBundle basename="locale_ru_RU" />
 </c:if>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,6 +27,10 @@
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
+<c:if test="${param.action == 'newuser'}" >
+	<c:set var="alertMessage" value="messages.register.success" />
+	<c:set var="alertColor" value="alert-success" />
+</c:if>
 <c:if test="${param.action == 'login'}" >
 	<c:set var="alertMessage" value="messages.login.success" />
 	<c:set var="alertColor" value="alert-success" />

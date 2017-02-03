@@ -37,11 +37,12 @@ public class login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			User user = UserDAO.getUser(request.getParameter("email"), request.getParameter("password"));
+			User user = UserDAO.getInstance().getUser(request.getParameter("email"), request.getParameter("password"));
 			if (user != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("isAuthorized", "yes");
 				session.setAttribute("userID", user.getId());
+				session.setAttribute("role", user.getRole());
 				response.sendRedirect("index.jsp?action=login");
 			} else {
 				response.sendRedirect("login.jsp?action=wronglogin");

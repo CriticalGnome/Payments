@@ -13,9 +13,10 @@
 <c:if test="${param.action == 'logout'}" >
 	<c:remove var="isAuthorized"/>
 	<c:remove var="userID"/>
+	<c:remove var="role"/>
 </c:if>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,7 +24,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/default.css" rel="stylesheet" type="text/css">
-<title><fmt:message key="title.index" /></title>
+<title><fmt:message key="title.login" /></title>
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
@@ -56,7 +57,7 @@
 					<label for="password"><fmt:message key="login.password" /></label>
 					<input type="password" class="form-control" name="password" placeholder="<fmt:message key="login.password.placeholder" />">
 				</div>
-				<button type="submit" name="submit" name="value" class="btn btn-primary"><fmt:message key="login.button" /></button>
+				<button type="submit" class="btn btn-primary"><fmt:message key="login.button" /></button>
 			</form>
 				<a href="register.jsp"><fmt:message key="register.button" /></a>
 		</div>

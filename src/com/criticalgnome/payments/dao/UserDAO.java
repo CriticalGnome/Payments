@@ -16,6 +16,26 @@ import com.criticalgnome.payments.utils.ConfigParser;
  */
 public class UserDAO {
 	
+	private static volatile UserDAO instance;
+	
+	private UserDAO(){
+		
+	}
+	
+	/**
+	 * Singleton
+	 */
+	public static UserDAO getInstance() {
+		if (instance == null) {
+			synchronized (UserDAO.class) {
+				if (instance == null) {
+					instance = new UserDAO();
+				}
+			}
+		}
+		return instance;
+	}
+	
 	private static Connection con;
 	private static PreparedStatement stmt;
 	private static ResultSet rs;
@@ -27,7 +47,7 @@ public class UserDAO {
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public static User getUser(int id) throws SQLException, IOException {
+	public User getUser(int id) throws SQLException, IOException {
 		User user = null;
 		String query = "SELECT * FROM users WHERE id = ?;";
 		DriverManager.registerDriver(new com.mysql.jdbc.Driver());
@@ -60,7 +80,7 @@ public class UserDAO {
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public static User getUser(String email, String password) throws SQLException, IOException {
+	public User getUser(String email, String password) throws SQLException, IOException {
 		User user = null;
 		String query = "SELECT * FROM users WHERE email = ? AND password = ?;";
 		DriverManager.registerDriver(new com.mysql.jdbc.Driver());
@@ -84,6 +104,29 @@ public class UserDAO {
 		stmt.close();
 		rs.close();
 		return user;
+	}
+
+	/**
+	 * Add new User into Database
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param password
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	public void addUser(String firstName, String lastName, String email, String password) throws SQLException, IOException {
+		String query = "INSERT INTO users (first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, 'User');";
+		DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+		con = DriverManager.getConnection(ConfigParser.getValue("dburl"), ConfigParser.getValue("dbuser"), ConfigParser.getValue("dbpassword"));
+		stmt = con.prepareStatement(query);
+		stmt.setString(1, firstName);
+		stmt.setString(2, lastName);
+		stmt.setString(3, email);
+		stmt.setString(4, password);
+		stmt.executeUpdate();
+		con.close();
+		stmt.close();
 	}
 
 }

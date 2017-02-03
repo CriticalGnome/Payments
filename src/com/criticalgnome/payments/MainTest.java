@@ -19,13 +19,13 @@ public class MainTest {
 	 */
 	public static void main(String[] args) throws SQLException, IOException {
 		User user = null;
-		user = UserDAO.getUser(1);
+		user = UserDAO.getInstance().getUser(1);
 		System.out.println("By ID: " + user);
-		user = UserDAO.getUser("lord.skiminok@gmail.com", "qwerty");
+		user = UserDAO.getInstance().getUser("lord.skiminok@gmail.com", "qwerty");
 		System.out.println("By login + pass: " + user);
-		user = UserDAO.getUser("lord.skiminok@gmail.com", "123");
+		user = UserDAO.getInstance().getUser("lord.skiminok@gmail.com", "123");
 		System.out.println("By login + wrong pass: " + user);
-		user = UserDAO.getUser("lord@gmail.com", "qwerty");
+		user = UserDAO.getInstance().getUser("lord@gmail.com", "qwerty");
 		System.out.println("By wrong login + wrong pass: " + user);
 	}
 
