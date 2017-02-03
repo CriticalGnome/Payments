@@ -1,7 +1,6 @@
 package com.criticalgnome.payments.actions;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
@@ -47,7 +46,7 @@ public class register extends HttpServlet {
 				isError = true;
 				redirectUrl = redirectUrl + "fnError=wrong&";
 			} 
-			redirectUrl = redirectUrl + "firstName=" + URLEncoder.encode(request.getParameter("firstName")) + "&";
+			redirectUrl = redirectUrl + "firstName=" + URLEncoder.encode(request.getParameter("firstName"), "UTF-8") + "&";
 		}
 		if (request.getParameter("lastName").equals("")) {
 			isError = true;
@@ -57,13 +56,13 @@ public class register extends HttpServlet {
 				isError = true;
 				redirectUrl = redirectUrl + "lnError=wrong&";
 			} 
-			redirectUrl = redirectUrl + "lastName=" + URLEncoder.encode(request.getParameter("lastName")) + "&";
+			redirectUrl = redirectUrl + "lastName=" + URLEncoder.encode(request.getParameter("lastName"), "UTF-8") + "&";
 		}
 		if (request.getParameter("email").equals("")) {
 			isError = true;
 			redirectUrl = redirectUrl + "emError=empty&";
 		} else {
-			redirectUrl = redirectUrl + "email=" + URLEncoder.encode(request.getParameter("email")) + "&";
+			redirectUrl = redirectUrl + "email=" + URLEncoder.encode(request.getParameter("email"), "UTF-8") + "&";
 		}
 		if (request.getParameter("password").equals("")) {
 			isError = true;
@@ -73,7 +72,7 @@ public class register extends HttpServlet {
 				isError = true;
 				redirectUrl = redirectUrl + "pwError=wrong&";
 			} 
-			redirectUrl = redirectUrl + "password=" + URLEncoder.encode(request.getParameter("password")) + "&";
+			redirectUrl = redirectUrl + "password=" + URLEncoder.encode(request.getParameter("password"), "UTF-8") + "&";
 		}
 		if (!isError) {
 			redirectUrl = "index.jsp?action=newuser";
