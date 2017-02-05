@@ -2,7 +2,6 @@ package com.criticalgnome.payments.dao;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +11,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.criticalgnome.payments.beans.User;
-import com.criticalgnome.payments.utils.ConfigParser;
 
 /**
  * @author CriticalGnome

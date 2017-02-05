@@ -8,13 +8,7 @@
 <c:if test="${param.lang == 'ru'}" >
 	<c:set var="locale" value="locale_ru_RU" scope="session" />
 </c:if>
-<c:if test="${sessionScope.locale == 'locale_en_US' or empty sessionScope.locale}" >
-    <fmt:setBundle basename="locale_en_US" />
-</c:if>
-<c:if test="${sessionScope.locale == 'locale_ru_RU'}">
-    <fmt:setBundle basename="locale_ru_RU" />
-</c:if>
-
+<%@ include file="inc/uselocale.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
