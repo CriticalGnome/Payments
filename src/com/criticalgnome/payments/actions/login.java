@@ -17,17 +17,11 @@ import org.apache.logging.log4j.Logger;
 import com.criticalgnome.payments.beans.User;
 import com.criticalgnome.payments.dao.UserDAO;
 
-/**
- * Servlet implementation class login
- */
 @WebServlet("/login")
 public class login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LogManager.getLogger(login.class);
    
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public login() {
         super();
     }
@@ -37,9 +31,6 @@ public class login extends HttpServlet {
 
     }
     
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			User user = UserDAO.getInstance().getUser(request.getParameter("email"), request.getParameter("password"));
@@ -55,7 +46,7 @@ public class login extends HttpServlet {
 				response.sendRedirect("login.jsp?action=wronglogin");
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.FATAL, "Can't access to database");
 		}
 	}
 }

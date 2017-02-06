@@ -55,7 +55,7 @@ public class UserDAO {
 	 */
 	public User getUser(int id) throws SQLException, IOException {
 		User user = null;
-		con = ConnectionManager.getInstance().getConnection();
+		con = ConnectionPool.getInstance().getConnection();
 		stmt = con.prepareStatement(SELECT_FROM_USERS_WITH_ID);
 		stmt.setInt(1, id);
 		rs = stmt.executeQuery();
@@ -86,7 +86,7 @@ public class UserDAO {
 	 */
 	public User getUser(String email, String password) throws SQLException, IOException {
 		User user = null;
-		con = ConnectionManager.getInstance().getConnection();
+		con = ConnectionPool.getInstance().getConnection();
 		stmt = con.prepareStatement(SELECT_FROM_USERS_WITH_EMAIL_AND_PASSWORD);
 		stmt.setString(1, email);
 		stmt.setString(2, password);
@@ -118,7 +118,7 @@ public class UserDAO {
 	 * @throws IOException
 	 */
 	public void addUser(String firstName, String lastName, String email, String password) throws SQLException, IOException {
-		con = ConnectionManager.getInstance().getConnection();
+		con = ConnectionPool.getInstance().getConnection();
 		stmt = con.prepareStatement(INSERT_NEW_RECORD_INTO_USERS);
 		stmt.setString(1, firstName);
 		stmt.setString(2, lastName);

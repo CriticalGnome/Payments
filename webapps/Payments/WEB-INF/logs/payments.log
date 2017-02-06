@@ -1,0 +1,94 @@
+[DEBUG] 06 фев 2017 17:54:44,609 [CustomConnectionPoolImpl] - available connections: 2
+[DEBUG] 06 фев 2017 17:54:44,618 [CustomConnectionPoolImpl] - available connections: 1
+[DEBUG] 06 фев 2017 17:54:45,617 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:46,618 [CustomConnectionPoolImpl] - Thread[Thread-3,5,main] is waiting for connection
+[INFO ] 06 фев 2017 17:54:46,627 [CustomConnectionPoolImpl] - Thread[Thread-4,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:46,628 [CustomConnectionPoolImpl] - available connections: 1
+[DEBUG] 06 фев 2017 17:54:46,628 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:47,617 [CustomConnectionPoolImpl] - Thread[Thread-5,5,main] is waiting for connection
+[INFO ] 06 фев 2017 17:54:47,626 [CustomConnectionPoolImpl] - Thread[Thread-6,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:47,628 [CustomConnectionPoolImpl] - available connections: 1
+[DEBUG] 06 фев 2017 17:54:47,628 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:47,639 [CustomConnectionPoolImpl] - Thread[Thread-1,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:48,618 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:48,621 [CustomConnectionPoolImpl] - Thread[Thread-2,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:49,618 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:49,631 [CustomConnectionPoolImpl] - Thread[Thread-3,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:50,618 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:50,630 [CustomConnectionPoolImpl] - Thread[Thread-5,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:51,618 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:51,621 [CustomConnectionPoolImpl] - Thread[Thread-7,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:52,619 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:52,622 [CustomConnectionPoolImpl] - Thread[Thread-8,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:53,619 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:53,621 [CustomConnectionPoolImpl] - Thread[Thread-9,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:54,620 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:54,622 [CustomConnectionPoolImpl] - Thread[Thread-10,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:55,620 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:55,622 [CustomConnectionPoolImpl] - Thread[Thread-11,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:56,620 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:56,622 [CustomConnectionPoolImpl] - Thread[Thread-12,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:57,621 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:57,623 [CustomConnectionPoolImpl] - Thread[Thread-13,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:58,621 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:58,637 [CustomConnectionPoolImpl] - Thread[Thread-14,5,main] is notify all
+[DEBUG] 06 фев 2017 17:54:59,621 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:54:59,626 [CustomConnectionPoolImpl] - Thread[Thread-15,5,main] is notify all
+[DEBUG] 06 фев 2017 17:55:00,622 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:55:00,625 [CustomConnectionPoolImpl] - Thread[Thread-16,5,main] is notify all
+[DEBUG] 06 фев 2017 17:55:01,622 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:55:01,638 [CustomConnectionPoolImpl] - Thread[Thread-17,5,main] is notify all
+[DEBUG] 06 фев 2017 17:55:02,622 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:55:02,625 [CustomConnectionPoolImpl] - Thread[Thread-18,5,main] is notify all
+[DEBUG] 06 фев 2017 17:55:03,622 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:55:03,625 [CustomConnectionPoolImpl] - Thread[Thread-19,5,main] is notify all
+[INFO ] 06 фев 2017 17:55:04,626 [CustomConnectionPoolImpl] - Thread[Thread-20,5,main] is notify all
+[INFO ] 06 фев 2017 17:55:05,624 [CustomConnectionPoolImpl] - Thread[Thread-21,5,main] is notify all
+[INFO ] 06 фев 2017 17:55:06,624 [CustomConnectionPoolImpl] - Thread[Thread-22,5,main] is notify all
+[DEBUG] 06 фев 2017 17:55:56,752 [CustomConnectionPoolImpl] - available connections: 2
+[DEBUG] 06 фев 2017 17:55:56,756 [CustomConnectionPoolImpl] - available connections: 1
+[DEBUG] 06 фев 2017 17:55:57,756 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:55:58,757 [CustomConnectionPoolImpl] - Thread[Thread-3,5,main] is waiting for connection
+[INFO ] 06 фев 2017 17:55:58,766 [CustomConnectionPoolImpl] - Thread[Thread-4,5,main] is notify all
+[DEBUG] 06 фев 2017 17:55:58,767 [CustomConnectionPoolImpl] - available connections: 1
+[DEBUG] 06 фев 2017 17:55:58,767 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:55:59,758 [CustomConnectionPoolImpl] - Thread[Thread-5,5,main] is waiting for connection
+[INFO ] 06 фев 2017 17:55:59,763 [CustomConnectionPoolImpl] - Thread[Thread-1,5,main] is notify all
+[DEBUG] 06 фев 2017 17:55:59,763 [CustomConnectionPoolImpl] - available connections: 1
+[DEBUG] 06 фев 2017 17:55:59,764 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:55:59,767 [CustomConnectionPoolImpl] - Thread[Thread-6,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:00,758 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:00,760 [CustomConnectionPoolImpl] - Thread[Thread-2,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:01,759 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:01,772 [CustomConnectionPoolImpl] - Thread[Thread-3,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:02,759 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:02,767 [CustomConnectionPoolImpl] - Thread[Thread-5,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:03,760 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:03,763 [CustomConnectionPoolImpl] - Thread[Thread-7,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:04,760 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:04,761 [CustomConnectionPoolImpl] - Thread[Thread-8,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:05,760 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:05,761 [CustomConnectionPoolImpl] - Thread[Thread-9,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:06,760 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:06,762 [CustomConnectionPoolImpl] - Thread[Thread-10,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:07,760 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:07,762 [CustomConnectionPoolImpl] - Thread[Thread-11,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:08,760 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:08,762 [CustomConnectionPoolImpl] - Thread[Thread-12,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:09,761 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:09,762 [CustomConnectionPoolImpl] - Thread[Thread-13,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:10,761 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:10,763 [CustomConnectionPoolImpl] - Thread[Thread-14,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:11,762 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:11,764 [CustomConnectionPoolImpl] - Thread[Thread-15,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:12,763 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:12,764 [CustomConnectionPoolImpl] - Thread[Thread-16,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:13,764 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:13,765 [CustomConnectionPoolImpl] - Thread[Thread-17,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:14,764 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:14,765 [CustomConnectionPoolImpl] - Thread[Thread-18,5,main] is notify all
+[DEBUG] 06 фев 2017 17:56:15,765 [CustomConnectionPoolImpl] - available connections: 0
+[INFO ] 06 фев 2017 17:56:15,766 [CustomConnectionPoolImpl] - Thread[Thread-19,5,main] is notify all
+[INFO ] 06 фев 2017 17:56:16,766 [CustomConnectionPoolImpl] - Thread[Thread-20,5,main] is notify all
+[INFO ] 06 фев 2017 17:56:17,767 [CustomConnectionPoolImpl] - Thread[Thread-21,5,main] is notify all
+[INFO ] 06 фев 2017 17:56:18,767 [CustomConnectionPoolImpl] - Thread[Thread-22,5,main] is notify all

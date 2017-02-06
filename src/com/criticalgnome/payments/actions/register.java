@@ -19,24 +19,15 @@ import org.apache.logging.log4j.Logger;
 import com.criticalgnome.payments.dao.UserDAO;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
-/**
- * Servlet implementation class register
- */
 @WebServlet("/register")
 public class register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static final Logger logger = LogManager.getLogger(register.class);
 	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public register() {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8"); 
@@ -90,7 +81,7 @@ public class register extends HttpServlet {
 				logger.log(Level.WARN, "Email \"{}\" already exits", request.getParameter("email"));
 				redirectUrl = "register.jsp?action=emailalreadyexist";
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.FATAL, "Can't access to database");
 			}
 		}
 		response.sendRedirect(redirectUrl);
