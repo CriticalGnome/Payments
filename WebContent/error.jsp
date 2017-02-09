@@ -18,6 +18,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
+			<h1><c:out value="${param.reason}" /></h1>
 			<fmt:message key="error.text" />
 		</div>
 	</div>

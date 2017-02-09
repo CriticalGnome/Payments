@@ -43,7 +43,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-			<form action="login" method="POST">
+			<form action="controller" method="POST">
 				<div class="form-group">
 					<label for="email"><fmt:message key="login.email" /></label>
 					<input type="email" autofocus class="form-control" name="email" placeholder="<fmt:message key="login.email.placeholder" />">
@@ -53,6 +53,7 @@
 					<input type="password" class="form-control" name="password" placeholder="<fmt:message key="login.password.placeholder" />">
 				</div>
 				<button type="submit" class="btn btn-primary"><fmt:message key="login.button" /></button>
+				<input type="hidden" name="action" value="login">
 			</form>
 				<a href="register.jsp"><fmt:message key="register.button" /></a>
 		</div>

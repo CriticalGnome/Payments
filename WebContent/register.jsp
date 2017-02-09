@@ -36,8 +36,8 @@
 <div class=container>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-			<form action="register" method="POST">
-
+			<form action="controller" method="POST">
+				<input type="hidden" name="action" value="register">
 				<%-- First Name input field --%>
 				<c:choose>
 					<%-- Empty First Name --%>
