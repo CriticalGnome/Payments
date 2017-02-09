@@ -36,8 +36,7 @@ public class ActionRegister implements Action {
 			try {
 				page = page + "firstName=" + URLEncoder.encode(request.getParameter("firstName"), "UTF-8") + "&";
 			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.ERROR, "Unsupported encoding");
 			}
 		}
 		if (request.getParameter("lastName").equals("")) {
@@ -52,8 +51,7 @@ public class ActionRegister implements Action {
 			try {
 				page = page + "lastName=" + URLEncoder.encode(request.getParameter("lastName"), "UTF-8") + "&";
 			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.ERROR, "Unsupported encoding");
 			}
 		}
 		if (request.getParameter("email").equals("")) {
@@ -63,8 +61,7 @@ public class ActionRegister implements Action {
 			try {
 				page = page + "email=" + URLEncoder.encode(request.getParameter("email"), "UTF-8") + "&";
 			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.ERROR, "Unsupported encoding");
 			}
 		}
 		if (request.getParameter("password").equals("")) {
@@ -79,8 +76,7 @@ public class ActionRegister implements Action {
 			try {
 				page = page + "password=" + URLEncoder.encode(request.getParameter("password"), "UTF-8") + "&";
 			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.ERROR, "Unsupported encoding");
 			}
 		}
 		if (!isError) {
@@ -93,8 +89,8 @@ public class ActionRegister implements Action {
 			} catch (SQLException e) {
 				logger.log(Level.FATAL, "Can't access to database");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.FATAL, "Input/Output Exception");
+				page = "error.jsp?reason=Input/Output Exception";
 			}
 		}
 		return page;

@@ -3,16 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:choose>
-	<c:when test="${ request.getRequestURI() == '/Payments/index.jsp' }">
+	<c:when test="${ pageContext.request.servletPath == '/index.jsp' }">
 		<c:set var="homeClass" value="active" />
 	</c:when>
-	<c:when test="${ request.getRequestURI() == '/Payments/about.jsp' }">
+	<c:when test="${ pageContext.request.servletPath == '/about.jsp' }">
 		<c:set var="aboutClass" value="active" />
 	</c:when>
-	<c:when test="${ request.getRequestURI() == '/Payments/userarea.jsp' }">
+	<c:when test="${ pageContext.request.servletPath == '/userarea.jsp' }">
 		<c:set var="userareaClass" value="active" />
 	</c:when>
-	<c:when test="${ request.getRequestURI() == '/Payments/adminarea.jsp' }">
+	<c:when test="${ pageContext.request.servletPath == '/adminarea.jsp' }">
 		<c:set var="adminareaClass" value="active" />
 	</c:when>
 	<c:otherwise>
