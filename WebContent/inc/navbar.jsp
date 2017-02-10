@@ -25,7 +25,7 @@
 				<li class="${ homeClass }"><a href="index.jsp"><fmt:message key="nav.home" /></a></li>
 				<li class="${ aboutClass }"><a href="about.jsp"><fmt:message key="nav.about" /></a></li>
 				<c:if test="${sessionScope.role == 'User' or sessionScope.role == 'Admin'}">
-					<li class="${ userareaClass }"><a href="userarea.jsp"><fmt:message key="nav.account" /></a></li>
+					<li class="${ userareaClass }"><a href="userarea"><fmt:message key="nav.account" /></a></li>
 				</c:if>
 				<c:if test="${sessionScope.role == 'Admin'}">
 					<li class="${ adminareaClass }"><a href="adminarea.jsp"><fmt:message key="nav.admin" /></a></li>

@@ -25,7 +25,6 @@ public class ConnectionPool {
     private int maxConnections;
     
     private ConnectionPool(){
-    	queue = new ArrayBlockingQueue<>(10, true);
     	url = ConfigParser.getValue("dburl");
     	user = ConfigParser.getValue("dbuser");
     	password = ConfigParser.getValue("dbpassword");

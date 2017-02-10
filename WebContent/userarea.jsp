@@ -17,8 +17,54 @@
 <%@ include file="inc/navbar.jsp"%>
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">
-			<p class="text-justify">Under construction</p>
+		<div class="col-md-6 col-md-offset-3">
+			<form class="form-horizontal">
+  				<div class="form-group">
+				    <label for="firstName" class="col-sm-4 control-label">First Name</label>
+    				<div class="col-sm-8">
+      					<input type="text" class="form-control" name="firstName" value="${user.firstName}">
+    				</div>
+  				</div>
+  				<div class="form-group">
+				    <label for="lastName" class="col-sm-4 control-label">Last Name</label>
+    				<div class="col-sm-8">
+      					<input type="text" class="form-control" name="lastName" value="${user.lastName}">
+    				</div>
+  				</div>
+  				<div class="form-group">
+				    <label for="email" class="col-sm-4 control-label">Email</label>
+    				<div class="col-sm-8">
+      					<input type="text" class="form-control" name="email" value="${user.email}" disabled>
+    				</div>
+  				</div>
+  				<div class="form-group">
+				    <label for="account" class="col-sm-4 control-label">Account</label>
+    				<div class="col-sm-8">
+      					<input type="text" class="form-control" name="account" value="${account.number}" disabled>
+    				</div>
+  				</div>
+  				<div class="form-group">
+				    <label for="amount" class="col-sm-4 control-label">Amount</label>
+    				<div class="col-sm-8">
+    					<div class="input-group">
+        					<span class="input-group-addon">$</span>
+      						<input type="text" class="form-control" name="amount" value="${account.amount}" disabled>
+      					</div>
+    				</div>
+  				</div>
+	  			<c:forEach var="i" begin="1" end="${cardsCount}">
+	  				<div class="form-group">
+					    <label for="card${i}" class="col-sm-4 control-label">Card <c:out value="${i}"/></label>
+	    				<div class="col-sm-5">
+    	  					<input type="text" class="form-control" name="card${i}" value="${cards[i-1].number}" disabled>
+    					</div>
+					    <label for="exp${i}" class="col-sm-1 control-label">Exp</label>
+    					<div class="col-sm-2">
+      						<input type="text" class="form-control" name="exp${i}" value="${cards[i-1].expMonth}/${cards[i-1].expYear}" disabled>
+    					</div>
+  					</div>
+  				</c:forEach>
+  			</form>
 		</div>
 	</div>
 </div>
