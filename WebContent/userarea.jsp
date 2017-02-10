@@ -20,31 +20,31 @@
 		<div class="col-md-6 col-md-offset-3">
 			<form class="form-horizontal">
   				<div class="form-group">
-				    <label for="firstName" class="col-sm-4 control-label">First Name</label>
+				    <label for="firstName" class="col-sm-4 control-label"><fmt:message key="userarea.first.name" /></label>
     				<div class="col-sm-8">
       					<input type="text" class="form-control" name="firstName" value="${user.firstName}">
     				</div>
   				</div>
   				<div class="form-group">
-				    <label for="lastName" class="col-sm-4 control-label">Last Name</label>
+				    <label for="lastName" class="col-sm-4 control-label"><fmt:message key="userarea.last.name" /></label>
     				<div class="col-sm-8">
       					<input type="text" class="form-control" name="lastName" value="${user.lastName}">
     				</div>
   				</div>
   				<div class="form-group">
-				    <label for="email" class="col-sm-4 control-label">Email</label>
+				    <label for="email" class="col-sm-4 control-label"><fmt:message key="userarea.email" /></label>
     				<div class="col-sm-8">
       					<input type="text" class="form-control" name="email" value="${user.email}" disabled>
     				</div>
   				</div>
   				<div class="form-group">
-				    <label for="account" class="col-sm-4 control-label">Account</label>
+				    <label for="account" class="col-sm-4 control-label"><fmt:message key="userarea.account" /></label>
     				<div class="col-sm-8">
       					<input type="text" class="form-control" name="account" value="${account.number}" disabled>
     				</div>
   				</div>
   				<div class="form-group">
-				    <label for="amount" class="col-sm-4 control-label">Amount</label>
+				    <label for="amount" class="col-sm-4 control-label"><fmt:message key="userarea.balance" /></label>
     				<div class="col-sm-8">
     					<div class="input-group">
         					<span class="input-group-addon">$</span>
@@ -54,11 +54,11 @@
   				</div>
 	  			<c:forEach var="i" begin="1" end="${cardsCount}">
 	  				<div class="form-group">
-					    <label for="card${i}" class="col-sm-4 control-label">Card <c:out value="${i}"/></label>
+					    <label for="card${i}" class="col-sm-4 control-label"><fmt:message key="userarea.card" /> <c:out value="${i}"/></label>
 	    				<div class="col-sm-5">
     	  					<input type="text" class="form-control" name="card${i}" value="${cards[i-1].number}" disabled>
     					</div>
-					    <label for="exp${i}" class="col-sm-1 control-label">Exp</label>
+					    <label for="exp${i}" class="col-sm-1 control-label"><fmt:message key="userarea.exp" /></label>
     					<div class="col-sm-2">
       						<input type="text" class="form-control" name="exp${i}" value="${cards[i-1].expMonth}/${cards[i-1].expYear}" disabled>
     					</div>
