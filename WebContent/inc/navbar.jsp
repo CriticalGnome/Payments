@@ -28,7 +28,7 @@
 					<li class="${ userareaClass }"><a href="controller?action=userarea"><fmt:message key="nav.account" /></a></li>
 				</c:if>
 				<c:if test="${sessionScope.role == 'Admin'}">
-					<li class="${ adminareaClass }"><a href="adminarea.jsp"><fmt:message key="nav.admin" /></a></li>
+					<li class="${ adminareaClass }"><a href="controller?action=adminarea"><fmt:message key="nav.admin" /></a></li>
 				</c:if>
 			</ul>
 			<form action="login.jsp" class="navbar-form navbar-right">

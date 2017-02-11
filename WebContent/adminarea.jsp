@@ -18,7 +18,34 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<p class="text-justify">Under construction</p>
+		<table class="table table-hover">
+			<tr>
+				<th><fmt:message key="adminarea.number" /></th>
+				<th><fmt:message key="adminarea.id" /></th>
+				<th><fmt:message key="adminarea.account" /></th>
+				<th><fmt:message key="adminarea.amount" /></th>
+				<th><fmt:message key="adminarea.username" /></th>
+				<th><fmt:message key="adminarea.role" /></th>
+				<th><fmt:message key="adminarea.function" /></th>
+			</tr>
+			<c:forEach var="i" begin="1" end="${blockedAccountsCount}">
+				<tr>
+					<td>${i}</td>
+					<td>${blockedAccounts[i-1].id}</td>
+					<td>${blockedAccounts[i-1].number}</td>
+					<td>${blockedAccounts[i-1].amount}</td>
+					<td>${blockedAccounts[i-1].firstName} ${blockedAccounts[i-1].lastName}</td>
+					<td>${blockedAccounts[i-1].role}</td>
+					<td>
+						<form action="controller" method="POST">
+						<input type="hidden" name="action" value="unBlockAccount">
+						<input type="hidden" name="id" value="${blockedAccounts[i-1].id}">
+						<button type="submit" class="btn btn-success btn-xs"><fmt:message key="adminarea.button.unblock" /></button>
+						</form>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
 		</div>
 	</div>
 </div>

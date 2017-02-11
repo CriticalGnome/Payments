@@ -21,7 +21,7 @@ public class SecurityAdminFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest)request).getSession();
-		if (!session.getAttribute("role").equals("Admin")) {
+		if (session.getAttribute("role") == null || !session.getAttribute("role").equals("Admin")) {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			chain.doFilter(request, response);

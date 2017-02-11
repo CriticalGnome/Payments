@@ -2,6 +2,8 @@ package com.criticalgnome.payments.actions;
 
 import com.criticalgnome.payments.actions.account.ActionBlockAccount;
 import com.criticalgnome.payments.actions.account.ActionUpdateAmount;
+import com.criticalgnome.payments.actions.admin.ActionAdminarea;
+import com.criticalgnome.payments.actions.admin.ActionUnBlockAccount;
 import com.criticalgnome.payments.actions.user.ActionLogin;
 import com.criticalgnome.payments.actions.user.ActionRegister;
 import com.criticalgnome.payments.actions.user.ActionUpdateUserName;
@@ -13,7 +15,9 @@ public enum ActionsTable {
 	USERAREA {{ this.action = new ActionUserarea(); }},
 	UPDATENAMES {{ this.action = new ActionUpdateUserName(); }},
 	UPDATEAMOUNT {{ this.action = new ActionUpdateAmount(); }},
-	BLOCKACCOUNT {{ this.action = new ActionBlockAccount(); }};
+	BLOCKACCOUNT {{ this.action = new ActionBlockAccount(); }},
+	ADMINAREA {{ this.action = new ActionAdminarea(); }},
+	UNBLOCKACCOUNT {{ this.action = new ActionUnBlockAccount(); }};
 	Action action;
 	public Action getCommand() {
 	 return action;
