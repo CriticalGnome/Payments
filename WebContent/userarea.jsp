@@ -18,9 +18,26 @@
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
+				<h3 class="modal-title"><fmt:message key="userarea.modal.header" /></h3>
+			</div>
+			<div class="modal-body"><fmt:message key="userarea.modal.text" /></div>
+			<div class="modal-footer">
+				<form action="controller" method="POST">
+					<input type="hidden" name="action" value="blockAccount">
+					<button class="btn btn-danger" type="submit"><fmt:message key="userarea.block" /></button>
+					<button class="btn btn-default" type="button" data-dismiss="modal"><fmt:message key="userarea.modal.cancel" /></button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+			<div class="col-md-6 col-md-offset-3">
 			<form class="form-horizontal" action="controller" method="POST">
   				<div class="form-group">
 				    <label for="firstName" class="col-sm-4 control-label"><fmt:message key="userarea.first.name" /></label>
@@ -56,7 +73,7 @@
 				<div class="text-right"><button type="button" class="btn btn-default disabled"><fmt:message key="userarea.blocked" /></button></div>
 				</c:if>
 				<c:if test="${!account.isBlocked}">
-				<div class="text-right"><button type="submit" class="btn btn-danger"><fmt:message key="userarea.block" /></button></div>
+				<div class="text-right"><button class="btn btn-danger" type="button" data-toggle="modal" data-target="#myModal"><fmt:message key="userarea.block" /></button></div>
 				</c:if>
   			</form>
   			<br>
