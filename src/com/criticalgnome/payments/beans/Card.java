@@ -77,6 +77,13 @@ public class Card {
 		this.comment = comment;
 	}
 
+	/**
+	 * Card constructor without parameters
+	 */
+	public Card() {
+
+	}
+
 	@Override
 	public String toString() {
 		return "Card [id=" + id + ", number=" + number + ", expMonth=" + expMonth + ", expYear=" + expYear

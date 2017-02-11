@@ -26,10 +26,10 @@ public class AccountDAO {
 	private static final String BLOCK_ACCOUNT_WITH_USER_ID = "UPDATE account SET is_blocked = 1 WHERE client_id = ?;";
 	private static final String SELECT_BLOCKED_ACCOUNT = "SELECT account.id, account.number, account.amount, users.first_name, users.last_name, users.role FROM account, users WHERE is_blocked = 1 AND account.client_id = users.id;";
 	private static final String UNBLOCK_ACCOUNT_WITH_ID = "UPDATE account SET is_blocked = 0 WHERE id = ?;";
+
 	private static volatile AccountDAO instance;
 	private static final Logger logger = LogManager.getLogger(AccountDAO.class);
 
-	
 	private AccountDAO(){
 		
 	}
@@ -80,6 +80,13 @@ public class AccountDAO {
 		return account;
 	}
 
+	/**
+	 * Update Amount by User ID 
+	 * @param id
+	 * @param amount
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public void updateAmount(int id, int amount) throws SQLException, IOException {
 		con = ConnectionPool.getInstance().getConnection();
 		stmt = con.prepareStatement(UPDATE_ACCOUNT_WITH_ID_AND_AMOUNT);
@@ -91,6 +98,12 @@ public class AccountDAO {
 		logger.log(Level.INFO, "User [id={}] has new amount: {}", id, amount);
 	}
 
+	/**
+	 * Block Account by User ID
+	 * @param id
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public void blockAccount(int id) throws SQLException, IOException {
 		con = ConnectionPool.getInstance().getConnection();
 		stmt = con.prepareStatement(BLOCK_ACCOUNT_WITH_USER_ID);
@@ -101,6 +114,12 @@ public class AccountDAO {
 		logger.log(Level.INFO, "User [id={}] block your account", id);
 	}
 	
+	/**
+	 * Create List of blocked Accounts
+	 * @return
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public List<BlockedAccount> getBlockedAccounts() throws SQLException, IOException {
 		List<BlockedAccount> blockedAccounts = new ArrayList<BlockedAccount>();
 		con = ConnectionPool.getInstance().getConnection();
@@ -123,6 +142,12 @@ public class AccountDAO {
 		return blockedAccounts;
 	}
 
+	/**
+	 * UnBlock Account by Account ID
+	 * @param id
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public void unBlockAccount(int id) throws SQLException, IOException {
 		con = ConnectionPool.getInstance().getConnection();
 		stmt = con.prepareStatement(UNBLOCK_ACCOUNT_WITH_ID);

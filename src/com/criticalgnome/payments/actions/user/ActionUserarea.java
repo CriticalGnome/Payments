@@ -17,9 +17,11 @@ import org.apache.logging.log4j.Logger;
 import com.criticalgnome.payments.actions.Action;
 import com.criticalgnome.payments.beans.Account;
 import com.criticalgnome.payments.beans.Card;
+import com.criticalgnome.payments.beans.Payment;
 import com.criticalgnome.payments.beans.User;
 import com.criticalgnome.payments.dao.AccountDAO;
 import com.criticalgnome.payments.dao.CardDAO;
+import com.criticalgnome.payments.dao.PaymentDAO;
 import com.criticalgnome.payments.dao.UserDAO;
 
 public class ActionUserarea implements Action {
@@ -32,18 +34,23 @@ public class ActionUserarea implements Action {
 		User user = null;
 		Account account = null;
 		List<Card> cards = new ArrayList<Card>();
+		List<Payment> payments = new ArrayList<Payment>();
 		try {
 			user = UserDAO.getInstance().getUser(userID);
 			account = AccountDAO.getInstance().getAccount(userID);
 			cards = CardDAO.getInstance().getCards(userID);
+			payments = PaymentDAO.getInstance().getPayments(userID);
 		} catch (SQLException e) {
 			logger.log(Level.FATAL, "SQL Exception");
 		}
 		int cardsCount = cards.size();
+		int paymentsCount = payments.size();
 		request.setAttribute("user", user);
 		request.setAttribute("account", account);
 		request.setAttribute("cards", cards);
 		request.setAttribute("cardsCount", cardsCount);
+		request.setAttribute("payments", payments);
+		request.setAttribute("paymentsCount", paymentsCount);
 		request.getRequestDispatcher("userarea.jsp").forward(request, response);
 		
 		return null;

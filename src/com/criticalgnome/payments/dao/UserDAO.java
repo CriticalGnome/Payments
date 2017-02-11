@@ -131,6 +131,14 @@ public class UserDAO {
 		logger.log(Level.INFO, "Add new User: {} {}, {}", firstName, lastName, email);
 	}
 
+	/**
+	 * Update First and Last Names by User ID
+	 * @param firstName
+	 * @param lastName
+	 * @param id
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public void updateName(String firstName, String lastName, int id) throws SQLException, IOException {
 		con = ConnectionPool.getInstance().getConnection();
 		stmt = con.prepareStatement(UPDATE_FIRST_AND_LAST_NAMES);
