@@ -40,7 +40,7 @@ public class UserArea extends HttpServlet {
 		try {
 			user = UserDAO.getInstance().getUser(userID);
 			account = AccountDAO.getInstance().getAccount(userID);
-			cards = CardDAO.getInstance().getAccount(userID);
+			cards = CardDAO.getInstance().getCards(userID);
 		} catch (SQLException e) {
 			logger.log(Level.FATAL, "SQL Exception");
 		}

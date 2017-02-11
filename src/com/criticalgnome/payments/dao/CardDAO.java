@@ -48,7 +48,7 @@ public class CardDAO {
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public List<Card> getAccount(int id) throws SQLException, IOException {
+	public List<Card> getCards(int id) throws SQLException, IOException {
 		List<Card> cards = new ArrayList<Card>();
 		con = ConnectionPool.getInstance().getConnection();
 		stmt = con.prepareStatement(SELECT_FROM_CREDIT_CARD_WITH_USER_ID);
