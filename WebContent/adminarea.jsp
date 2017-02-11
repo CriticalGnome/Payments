@@ -18,6 +18,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
+		<h2><fmt:message key="adminarea.header" /></h2>
 		<table class="table table-hover">
 			<tr>
 				<th><fmt:message key="adminarea.number" /></th>
