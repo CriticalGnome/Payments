@@ -31,7 +31,8 @@ public class Controller extends HttpServlet {
 				page = "error.jsp?reason=Illegal Call";
 			}
 		}
-		response.sendRedirect(page);
+		request.getRequestDispatcher(page).forward(request, response);
+//		response.sendRedirect(page);
 	}
 
 }
