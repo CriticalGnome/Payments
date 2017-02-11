@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -20,7 +22,7 @@ public class ActionRegister implements Action {
 	private static final Logger logger = LogManager.getLogger(ActionRegister.class);
 
 	@Override
-	public String execute(HttpServletRequest request) {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Boolean isError = false;
 		String page = "register.jsp?";
 

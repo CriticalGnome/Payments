@@ -3,7 +3,9 @@ package com.criticalgnome.payments.actions;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.Level;
@@ -18,7 +20,7 @@ public class ActionLogin implements Action {
 
 
 	@Override
-	public String execute(HttpServletRequest request) {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = null;
 		try {
 			User user = UserDAO.getInstance().getUser(request.getParameter("email"), request.getParameter("password"));

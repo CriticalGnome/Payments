@@ -24,9 +24,9 @@ public class Controller extends HttpServlet {
 		if (request.getParameter("action") == null) {
 			page = "error.jsp?reason=Illegal Call";
 		} else {
-			Action action = ActionFactory.getAction(request);
+			Action action = ActionFactory.getAction(request, response);
 			if (action != null) {
-				page = action.execute(request);
+				page = action.execute(request, response);
 			} else {
 				page = "error.jsp?reason=Illegal Call";
 			}
