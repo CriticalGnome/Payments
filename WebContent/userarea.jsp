@@ -3,6 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@ include file="inc/uselocale.jsp" %>
+<c:if test="${empty user}">
+<c:redirect url="controller?action=userarea" />
+</c:if>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,27 +46,18 @@
   			<br>
 			<form class="form-horizontal" action="controller" method="POST">
   				<div class="form-group">
-
-  					<%--
-  					<c:out value="${account}" />
-				    --%>
-  					<%--
-  					<c:if test="${account.isBlocked == false}">
-  						Active
-  					</c:if>
-				    --%>
-  					<%--
-  					<c:if test="${account.isBlocked}">
-  						Active
-  					</c:if>
-				    --%>
 				    <label for="account" class="col-sm-4 control-label"><fmt:message key="userarea.account" /></label>
     				<div class="col-sm-8">
       					<input type="text" class="form-control" name="account" value="${account.number}" readonly>
     				</div>
   				</div>
 				<input type="hidden" name="action" value="blockAccount">
+				<c:if test="${account.isBlocked}">
+				<div class="text-right"><button type="button" class="btn btn-default disabled"><fmt:message key="userarea.blocked" /></button></div>
+				</c:if>
+				<c:if test="${!account.isBlocked}">
 				<div class="text-right"><button type="submit" class="btn btn-danger"><fmt:message key="userarea.block" /></button></div>
+				</c:if>
   			</form>
   			<br>
 			<form class="form-horizontal" action="controller" method="POST">
@@ -76,6 +70,7 @@
       					</div>
     				</div>
   				</div>
+				<c:if test="${!account.isBlocked}">
   				<div class="form-group">
 				    <label for="amountAdd" class="col-sm-4 control-label"><fmt:message key="userarea.balance.add" /></label>
     				<div class="col-sm-8">
@@ -87,6 +82,7 @@
   				</div>
 				<input type="hidden" name="action" value="updateAmount">
 				<div class="text-right"><button type="submit" class="btn btn-default"><fmt:message key="userarea.confirm.add" /></button></div>
+				</c:if>
   			</form>
   			<br>
 			<form class="form-horizontal">

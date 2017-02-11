@@ -152,7 +152,7 @@ public class Account {
 		this.amount = amount;
 	}
 
-	public boolean isBlocked() {
+	public boolean isisBlocked() {
 		return isBlocked;
 	}
 

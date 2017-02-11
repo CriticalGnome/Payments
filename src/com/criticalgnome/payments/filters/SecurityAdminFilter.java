@@ -14,14 +14,14 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class SecurityFilter
  */
-@WebFilter("/userarea.jsp")
-public class SecurityFilter implements Filter {
+@WebFilter("/adminarea.jsp")
+public class SecurityAdminFilter implements Filter {
 
 	public void destroy() {}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest)request).getSession();
-		if (session.getAttribute("isAuthorized") == null) {
+		if (!session.getAttribute("role").equals("Admin")) {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			chain.doFilter(request, response);
