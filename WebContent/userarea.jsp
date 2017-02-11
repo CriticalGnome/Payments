@@ -18,7 +18,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<form class="form-horizontal">
+			<form class="form-horizontal" action="controller" method="POST">
   				<div class="form-group">
 				    <label for="firstName" class="col-sm-4 control-label"><fmt:message key="userarea.first.name" /></label>
     				<div class="col-sm-8">
@@ -34,33 +34,71 @@
   				<div class="form-group">
 				    <label for="email" class="col-sm-4 control-label"><fmt:message key="userarea.email" /></label>
     				<div class="col-sm-8">
-      					<input type="text" class="form-control" name="email" value="${user.email}" disabled>
+      					<input type="text" class="form-control" name="email" value="${user.email}" readonly>
     				</div>
   				</div>
+  				<input type="hidden" name="action" value="updateNames">
+  				<div class="text-right"><button type="submit" class="btn btn-default"><fmt:message key="userarea.confirm.changes" /></button></div>
+  			</form>
+  			<br>
+			<form class="form-horizontal" action="controller" method="POST">
   				<div class="form-group">
+
+  					<%--
+  					<c:out value="${account}" />
+				    --%>
+  					<%--
+  					<c:if test="${account.isBlocked == false}">
+  						Active
+  					</c:if>
+				    --%>
+  					<%--
+  					<c:if test="${account.isBlocked}">
+  						Active
+  					</c:if>
+				    --%>
 				    <label for="account" class="col-sm-4 control-label"><fmt:message key="userarea.account" /></label>
     				<div class="col-sm-8">
-      					<input type="text" class="form-control" name="account" value="${account.number}" disabled>
+      					<input type="text" class="form-control" name="account" value="${account.number}" readonly>
     				</div>
   				</div>
+				<input type="hidden" name="action" value="blockAccount">
+				<div class="text-right"><button type="submit" class="btn btn-danger"><fmt:message key="userarea.block" /></button></div>
+  			</form>
+  			<br>
+			<form class="form-horizontal" action="controller" method="POST">
   				<div class="form-group">
 				    <label for="amount" class="col-sm-4 control-label"><fmt:message key="userarea.balance" /></label>
     				<div class="col-sm-8">
     					<div class="input-group">
         					<span class="input-group-addon">$</span>
-      						<input type="text" class="form-control" name="amount" value="${account.amount}" disabled>
+      						<input type="text" class="form-control" name="amount" value="${account.amount}" readonly>
       					</div>
     				</div>
   				</div>
+  				<div class="form-group">
+				    <label for="amountAdd" class="col-sm-4 control-label"><fmt:message key="userarea.balance.add" /></label>
+    				<div class="col-sm-8">
+    					<div class="input-group">
+        					<span class="input-group-addon">$</span>
+      						<input type="text" class="form-control" name="amountAdd" value="0">
+      					</div>
+    				</div>
+  				</div>
+				<input type="hidden" name="action" value="updateAmount">
+				<div class="text-right"><button type="submit" class="btn btn-default"><fmt:message key="userarea.confirm.add" /></button></div>
+  			</form>
+  			<br>
+			<form class="form-horizontal">
 	  			<c:forEach var="i" begin="1" end="${cardsCount}">
 	  				<div class="form-group">
 					    <label for="card${i}" class="col-sm-4 control-label"><fmt:message key="userarea.card" /> <c:out value="${i}"/></label>
 	    				<div class="col-sm-5">
-    	  					<input type="text" class="form-control" name="card${i}" value="${cards[i-1].number}" disabled>
+    	  					<input type="text" class="form-control" name="card${i}" value="${cards[i-1].number}" readonly>
     					</div>
 					    <label for="exp${i}" class="col-sm-1 control-label"><fmt:message key="userarea.exp" /></label>
     					<div class="col-sm-2">
-      						<input type="text" class="form-control" name="exp${i}" value="${cards[i-1].expMonth}/${cards[i-1].expYear}" disabled>
+      						<input type="text" class="form-control" name="exp${i}" value="${cards[i-1].expMonth}/${cards[i-1].expYear}" readonly>
     					</div>
   					</div>
   				</c:forEach>

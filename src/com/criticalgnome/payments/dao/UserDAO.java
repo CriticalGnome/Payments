@@ -21,6 +21,7 @@ public class UserDAO {
 	private static final String INSERT_NEW_RECORD_INTO_USERS = "INSERT INTO users (first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, 'User');";
 	private static final String SELECT_FROM_USERS_WITH_ID = "SELECT * FROM users WHERE id = ?;";
 	private static final String SELECT_FROM_USERS_WITH_EMAIL_AND_PASSWORD = "SELECT * FROM users WHERE email = ? AND password = ?;";
+	private static final String UPDATE_FIRST_AND_LAST_NAMES = "UPDATE users SET first_name = ?, last_name = ? WHERE id = ?;";
 	private static volatile UserDAO instance;
 	private static final Logger logger = LogManager.getLogger(UserDAO.class);
 	
@@ -128,6 +129,18 @@ public class UserDAO {
 		con.close();
 		stmt.close();
 		logger.log(Level.INFO, "Add new User: {} {}, {}", firstName, lastName, email);
+	}
+
+	public void updateName(String firstName, String lastName, int id) throws SQLException, IOException {
+		con = ConnectionPool.getInstance().getConnection();
+		stmt = con.prepareStatement(UPDATE_FIRST_AND_LAST_NAMES);
+		stmt.setString(1, firstName);
+		stmt.setString(2, lastName);
+		stmt.setInt(3, id);
+		stmt.executeUpdate();
+		con.close();
+		stmt.close();
+		logger.log(Level.INFO, "Update User First and Last Names [id={}]: {} {}", id, firstName, lastName);
 	}
 
 }

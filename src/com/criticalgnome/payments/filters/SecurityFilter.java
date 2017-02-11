@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class SecurityFilter
  */
-@WebFilter("/userarea")
+@WebFilter("/userarea.jsp")
 public class SecurityFilter implements Filter {
 
 	public void destroy() {}

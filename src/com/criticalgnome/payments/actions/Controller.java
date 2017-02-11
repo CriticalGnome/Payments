@@ -32,7 +32,6 @@ public class Controller extends HttpServlet {
 			}
 		}
 		request.getRequestDispatcher(page).forward(request, response);
-//		response.sendRedirect(page);
 	}
 
 }

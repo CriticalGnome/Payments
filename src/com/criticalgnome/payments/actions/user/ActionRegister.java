@@ -1,4 +1,4 @@
-package com.criticalgnome.payments.actions;
+package com.criticalgnome.payments.actions.user;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -15,6 +15,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.criticalgnome.payments.actions.Action;
 import com.criticalgnome.payments.dao.UserDAO;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
