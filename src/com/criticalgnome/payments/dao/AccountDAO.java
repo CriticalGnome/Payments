@@ -111,7 +111,7 @@ public class AccountDAO {
 		stmt.executeUpdate();
 		con.close();
 		stmt.close();
-		logger.log(Level.INFO, "User [id={}] block your account", id);
+		logger.log(Level.INFO, "User [id={}] block own account", id);
 	}
 	
 	/**
