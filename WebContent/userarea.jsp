@@ -18,14 +18,93 @@
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
-<%-- Modal Window --%>
-<div id="myModal" class="modal fade">
-	<div class="modal-dialog">
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 text-center">
+			<h3><fmt:message key="userarea.account" /> ${account.number}</h3>
+		</div>
+	</div>
+
+	<%-- User area --%>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<form class="form-horizontal" action="controller" method="POST">
+  				<div class="form-group">
+				    <label for="firstName" class="control-label col-sm-4"><fmt:message key="userarea.first.name" /></label>
+      				<div class="col-sm-8"><input type="text" class="form-control" name="firstName" value="${user.firstName}"></div>
+  				</div>
+  				<div class="form-group">
+				    <label for="lastName" class="col-sm-4 control-label"><fmt:message key="userarea.last.name" /></label>
+    				<div class="col-sm-8"><input type="text" class="form-control" name="lastName" value="${user.lastName}"></div>
+  				</div>
+  				<input type="hidden" name="action" value="updateNames">
+  				<div class="text-right"><button type="submit" class="btn btn-default"><fmt:message key="userarea.confirm.changes" /></button></div>
+  			</form>
+  		</div>
+  	</div>
+  	<br>
+
+  	<%-- Balance area --%>
+  	<div class="row">
+  		<div class="col-md-6 col-md-offset-3 text-center">
+			<h3><fmt:message key="userarea.balance" />: $${account.amount}</h3>
+		</div>
+	</div>
+	
+  	<%-- Add balance area --%>
+  	<div class="row">
+  		<div class="col-md-6 col-md-offset-3">
+			<c:if test="${!account.isBlocked}">
+				<form class="form-horizontal" action="controller" method="POST">
+					<input type="hidden" name="action" value="updateAmount">
+					<input type="hidden" name="amount" value="${account.amount}">
+  					<div class="form-group">
+				    	<label for="amountAdd" class="col-sm-4 control-label"><fmt:message key="userarea.balance.add" /></label>
+    					<div class="col-sm-5">
+    						<div class="input-group">
+    							<span class="input-group-addon">$</span>
+    							<input type="text" class="form-control" name="amountAdd" value="0">
+    						</div>
+    					</div>
+						<div class="col-sm-3 text-right"><button type="submit" class="btn btn-default"><fmt:message key="userarea.confirm.add" /></button></div>
+    				</div>
+	  			</form>
+			</c:if>
+			<c:if test="${account.isBlocked}">
+				<div class="text-center">
+					<p class="bg-danger"><fmt:message key="userarea.blocked" /></p>
+				</div>
+			</c:if>
+		</div>
+	</div>
+	<br>
+
+	<%-- Account area --%>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 text-center">
+				<c:if test="${!account.isBlocked}">
+					<form class="form-horizontal" action="controller" method="POST">
+						<input type="hidden" name="action" value="blockAccount">
+						<button class="btn btn-success" type="button" data-toggle="modal" data-target=".modal-send"><fmt:message key="userarea.send" /></button>
+						<button class="btn btn-danger" type="button" data-toggle="modal" data-target=".modal-warning"><fmt:message key="userarea.block" /></button>
+		  			</form>
+				</c:if>
+  		</div>
+  	</div>
+	<br>
+
+</div>
+
+<%-- Warning Modal Windows --%>
+<div id="modalWarning" class="modal fade modal-warning" tabindex="1" role="dialog" aria-labelledby="modalWarning">
+	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
 				<h3 class="modal-title"><fmt:message key="userarea.modal.header" /></h3>
 			</div>
-			<div class="modal-body"><fmt:message key="userarea.modal.text" /></div>
+			<div class="modal-body">
+				<fmt:message key="userarea.modal.text" />
+			</div>
 			<div class="modal-footer">
 				<form action="controller" method="POST">
 					<input type="hidden" name="action" value="blockAccount">
@@ -36,122 +115,45 @@
 		</div>
 	</div>
 </div>
-<div class="container">
-	<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-			<form class="form-horizontal" action="controller" method="POST">
-  				<div class="form-group">
-				    <label for="firstName" class="col-sm-4 control-label"><fmt:message key="userarea.first.name" /></label>
-    				<div class="col-sm-8">
-      					<input type="text" class="form-control" name="firstName" value="${user.firstName}">
-    				</div>
-  				</div>
-  				<div class="form-group">
-				    <label for="lastName" class="col-sm-4 control-label"><fmt:message key="userarea.last.name" /></label>
-    				<div class="col-sm-8">
-      					<input type="text" class="form-control" name="lastName" value="${user.lastName}">
-    				</div>
-  				</div>
-  				<div class="form-group">
-				    <label for="email" class="col-sm-4 control-label"><fmt:message key="userarea.email" /></label>
-    				<div class="col-sm-8">
-      					<input type="text" class="form-control" name="email" value="${user.email}" readonly>
-    				</div>
-  				</div>
-  				<input type="hidden" name="action" value="updateNames">
-  				<div class="text-right"><button type="submit" class="btn btn-default"><fmt:message key="userarea.confirm.changes" /></button></div>
-  			</form>
-  			<br>
-			<form class="form-horizontal" action="controller" method="POST">
-  				<div class="form-group">
-				    <label for="account" class="col-sm-4 control-label"><fmt:message key="userarea.account" /></label>
-    				<div class="col-sm-8">
-      					<input type="text" class="form-control" name="account" value="${account.number}" readonly>
-    				</div>
-  				</div>
-				<input type="hidden" name="action" value="blockAccount">
-				<c:if test="${account.isBlocked}">
-				<div class="text-right"><button type="button" class="btn btn-default disabled"><fmt:message key="userarea.blocked" /></button></div>
-				</c:if>
-				<c:if test="${!account.isBlocked}">
-				<div class="text-right"><button class="btn btn-danger" type="button" data-toggle="modal" data-target="#myModal"><fmt:message key="userarea.block" /></button></div>
-				</c:if>
-  			</form>
-  			<br>
-			<form class="form-horizontal" action="controller" method="POST">
-  				<div class="form-group">
-				    <label for="amount" class="col-sm-4 control-label"><fmt:message key="userarea.balance" /></label>
-    				<div class="col-sm-8">
-    					<div class="input-group">
-        					<span class="input-group-addon">$</span>
-      						<input type="text" class="form-control" name="amount" value="${account.amount}" readonly>
-      					</div>
-    				</div>
-  				</div>
-				<c:if test="${!account.isBlocked}">
-  				<div class="form-group">
-				    <label for="amountAdd" class="col-sm-4 control-label"><fmt:message key="userarea.balance.add" /></label>
-    				<div class="col-sm-8">
-    					<div class="input-group">
-        					<span class="input-group-addon">$</span>
-      						<input type="text" class="form-control" name="amountAdd" value="0">
-      					</div>
-    				</div>
-  				</div>
-				<input type="hidden" name="action" value="updateAmount">
-				<div class="text-right"><button type="submit" class="btn btn-default"><fmt:message key="userarea.confirm.add" /></button></div>
-				</c:if>
-  			</form>
-  			<br>
-			<form class="form-horizontal">
-	  			<c:forEach var="i" begin="1" end="${cardsCount}">
-	  				<div class="form-group">
-					    <label for="card${i}" class="col-sm-4 control-label"><fmt:message key="userarea.card" /> <c:out value="${i}"/></label>
-	    				<div class="col-sm-5">
-    	  					<input type="text" class="form-control" name="card${i}" value="${cards[i-1].number}" readonly>
-    					</div>
-					    <label for="exp${i}" class="col-sm-1 control-label"><fmt:message key="userarea.exp" /></label>
-    					<div class="col-sm-2">
-      						<input type="text" class="form-control" name="exp${i}" value="${cards[i-1].expMonth}/${cards[i-1].expYear}" readonly>
-    					</div>
-  					</div>
-  				</c:forEach>
-  			</form>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<h3><fmt:message key="userarea.payments.header" /></h3>
-			<table class="table table-striped table-condensed">
-				<tr>
-					<th><fmt:message key="userarea.payments.no" /></th>
-					<th><fmt:message key="userarea.payments.datetime" /></th>
-					<th><fmt:message key="userarea.payments.destination" /></th>
-					<th><fmt:message key="userarea.payments.account" /></th>
-					<th><fmt:message key="userarea.payments.user" /></th>
-					<th><fmt:message key="userarea.payments.amount" /></th>
-					<th><fmt:message key="userarea.payments.comment" /></th>
-				</tr>
-				<c:forEach var="i" begin="1" end="${paymentsCount}">
-				<tr>
-					<td>${i}</td>
-					<td>${payments[i-1].dateTime}</td>
-					<c:if test="${payments[i-1].accountID == sessionScope.userID}">
-						<td><span class="label label-danger"><fmt:message key="userarea.payments.to" /></span></td>
-					</c:if>
-					<c:if test="${payments[i-1].accountID != sessionScope.userID}">
-						<td><span class="label label-success"><fmt:message key="userarea.payments.from" /></span></td>
-					</c:if>
-					<td>${payments[i-1].number}</td>
-					<td>${payments[i-1].firstName} ${payments[i-1].lastName}</td>
-					<td>${payments[i-1].amount}</td>
-					<td>${payments[i-1].comment}</td>
-				</tr>
-				</c:forEach>
-			</table>
+
+<%-- Send Funds Modal Windows --%>
+<div id="modalSendFunds" class="modal fade modal-send" tabindex="2" role="dialog" aria-labelledby="modalSend">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form action="controller" method="POST">
+				<div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
+					<h3 class="modal-title"><fmt:message key="userarea.send" /></h3>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="amountSend"><fmt:message key="userarea.sum" /></label>
+						<input name="amount" id="amountSend" class="form-control" type="text" value="0" />
+					</div>
+					<div class="form-group">
+						<label for="commentSend"><fmt:message key="userarea.comment" /></label>
+						<textarea name="comment" id="commentSend" class="form-control" rows="3" placeholder="<fmt:message key="userarea.comment.placeholder" />"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="acountId"><fmt:message key="userarea.dest" /></label>
+						<select name="id" name="accountId" class="form-control" size="5">
+							<c:forEach var="i" begin="1" end="${availableAccountsCount}">
+								<c:if test="${availableAccounts[i-1].id != account.id}">
+									<option value="${availableAccounts[i-1].id}">[${availableAccounts[i-1].number}] ${availableAccounts[i-1].firstName} ${availableAccounts[i-1].lastName}</option>
+								</c:if>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input name="action" id="actionSend" type="hidden" value="sendFunds">
+					<button name="submit" name="sendSubmit" class="btn btn-success" type="submit"><fmt:message key="userarea.modal.send" /></button>
+					<button name="button" name="sendCancel" class="btn btn-default" type="button" data-dismiss="modal"><fmt:message key="userarea.modal.cancel" /></button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
+
 <%@ include file="inc/footer.jsp"%>
 </body>
 </html>

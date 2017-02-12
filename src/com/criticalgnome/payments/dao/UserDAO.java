@@ -22,6 +22,7 @@ public class UserDAO {
 	private static final String SELECT_FROM_USERS_WITH_ID = "SELECT * FROM users WHERE id = ?;";
 	private static final String SELECT_FROM_USERS_WITH_EMAIL_AND_PASSWORD = "SELECT * FROM users WHERE email = ? AND password = ?;";
 	private static final String UPDATE_FIRST_AND_LAST_NAMES = "UPDATE users SET first_name = ?, last_name = ? WHERE id = ?;";
+	private static final String GET_USER_ID_BY_EMAIL = "SELECT id FROM users WHERE email = ?;";
 	private static volatile UserDAO instance;
 	private static final Logger logger = LogManager.getLogger(UserDAO.class);
 	
@@ -75,6 +76,28 @@ public class UserDAO {
 		stmt.close();
 		rs.close();
 		return user;
+	}
+
+	/**
+	 * Get user ID by email
+	 * @param email
+	 * @return
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	public int getId(String email) throws SQLException, IOException {
+		int id = 0;
+		con = ConnectionPool.getInstance().getConnection();
+		stmt = con.prepareStatement(GET_USER_ID_BY_EMAIL);
+		stmt.setString(1, email);
+		rs = stmt.executeQuery();
+		if (rs.next()) {
+			id = rs.getInt("id");
+		}
+		con.close();
+		stmt.close();
+		rs.close();
+		return id;
 	}
 
 	/**

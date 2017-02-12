@@ -1,4 +1,4 @@
-package com.criticalgnome.payments.actions.user;
+package com.criticalgnome.payments.actions.payment;
 
 import java.io.IOException;
 

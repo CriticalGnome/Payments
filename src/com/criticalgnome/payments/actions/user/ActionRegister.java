@@ -16,6 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.criticalgnome.payments.actions.Action;
+import com.criticalgnome.payments.dao.AccountDAO;
 import com.criticalgnome.payments.dao.UserDAO;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
@@ -84,16 +85,42 @@ public class ActionRegister implements Action {
 		}
 		if (!isError) {
 			page = "index.jsp?action=newuser";
+//			Add user into database
 			try {
 				UserDAO.getInstance().addUser(request.getParameter("firstName"), request.getParameter("lastName"), request.getParameter("email"), request.getParameter("password"));
 			} catch (MySQLIntegrityConstraintViolationException e) {
 				logger.log(Level.WARN, "Email \"{}\" already exits", request.getParameter("email"));
 				page = "register.jsp?action=emailalreadyexist";
 			} catch (SQLException e) {
-				logger.log(Level.FATAL, "Can't access to database");
+				logger.log(Level.FATAL, "SQL Exception in add user area");
+				e.printStackTrace();
+				page = "error.jsp?reason=Input/SQL Exception";
 			} catch (IOException e) {
 				logger.log(Level.FATAL, "Input/Output Exception");
 				page = "error.jsp?reason=Input/Output Exception";
+			}
+//			Get new user ID by email
+			int id = 0;
+			try {
+				id = UserDAO.getInstance().getId(request.getParameter("email"));
+			} catch (SQLException e) {
+				logger.log(Level.FATAL, "SQL Exception in get ID area");
+				page = "error.jsp?reason=Input/SQL Exception";
+			}			
+//			Get max account number
+			int maxNumber = 0;
+			try {
+				maxNumber = AccountDAO.getInstance().getmaxAccountNumber();
+			} catch (SQLException e) {
+				logger.log(Level.FATAL, "SQL Exception in get max account number area");
+				page = "error.jsp?reason=Input/SQL Exception";
+			}
+//			Create account for new user
+			try {
+				AccountDAO.getInstance().createNewAccount(maxNumber+1, id);
+			} catch (SQLException e) {
+				logger.log(Level.FATAL, "SQL Exception in create account area");
+				page = "error.jsp?reason=Input/SQL Exception";
 			}
 		}
 		return page;

@@ -13,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.criticalgnome.payments.beans.Account;
+import com.criticalgnome.payments.beans.AvailableForPayment;
 import com.criticalgnome.payments.beans.BlockedAccount;
 
 /**
@@ -26,7 +27,10 @@ public class AccountDAO {
 	private static final String BLOCK_ACCOUNT_WITH_USER_ID = "UPDATE account SET is_blocked = 1 WHERE client_id = ?;";
 	private static final String SELECT_BLOCKED_ACCOUNT = "SELECT account.id, account.number, account.amount, users.first_name, users.last_name, users.role FROM account, users WHERE is_blocked = 1 AND account.client_id = users.id;";
 	private static final String UNBLOCK_ACCOUNT_WITH_ID = "UPDATE account SET is_blocked = 0 WHERE id = ?;";
-
+	private static final String LIST_OF_AVAILABLE_ACCOUNTS = "SELECT account.id, account.number, users.first_name, users.last_name FROM account, users WHERE account.client_id = users.id;";
+	private static final String GET_MAX_ACCOUNT_NUMBER = "SELECT max(number) FROM account;";
+	private static final String CREATE_ACCOUNT_FOR_NEW_USER = "INSERT INTO account (number, amount, is_blocked, client_id) VALUES (?, 0, 0, ?);";
+	
 	private static volatile AccountDAO instance;
 	private static final Logger logger = LogManager.getLogger(AccountDAO.class);
 
@@ -115,6 +119,22 @@ public class AccountDAO {
 	}
 	
 	/**
+	 * UnBlock Account by Account ID
+	 * @param id
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	public void unBlockAccount(int id) throws SQLException, IOException {
+		con = ConnectionPool.getInstance().getConnection();
+		stmt = con.prepareStatement(UNBLOCK_ACCOUNT_WITH_ID);
+		stmt.setInt(1, id);
+		stmt.executeUpdate();
+		con.close();
+		stmt.close();
+		logger.log(Level.INFO, "Administrator unblock account {}", id);
+	}
+	
+	/**
 	 * Create List of blocked Accounts
 	 * @return
 	 * @throws SQLException
@@ -141,21 +161,56 @@ public class AccountDAO {
 		rs.close();
 		return blockedAccounts;
 	}
-
+	
 	/**
-	 * UnBlock Account by Account ID
-	 * @param id
+	 * Create List of available Accounts
+	 * @return
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public void unBlockAccount(int id) throws SQLException, IOException {
+	public List<AvailableForPayment> getAllAvailableAccounts() throws SQLException, IOException {
+		List<AvailableForPayment> availableAccounts = new ArrayList<AvailableForPayment>();
 		con = ConnectionPool.getInstance().getConnection();
-		stmt = con.prepareStatement(UNBLOCK_ACCOUNT_WITH_ID);
-		stmt.setInt(1, id);
+		stmt = con.prepareStatement(LIST_OF_AVAILABLE_ACCOUNTS);
+		rs = stmt.executeQuery();
+		while (rs.next()) {
+			AvailableForPayment account = new AvailableForPayment.Builder()
+					.id(rs.getInt("id"))
+					.number(rs.getInt("number"))
+					.firstName(rs.getString("first_name"))
+					.lastName(rs.getString("last_name"))
+					.build();
+			availableAccounts.add(account);
+		}
+		con.close();
+		stmt.close();
+		rs.close();
+		return availableAccounts;
+	}
+	
+	public int getmaxAccountNumber() throws SQLException, IOException {
+		int maxNumber = 0;
+		con = ConnectionPool.getInstance().getConnection();
+		stmt = con.prepareStatement(GET_MAX_ACCOUNT_NUMBER);
+		rs = stmt.executeQuery();
+		if (rs.next()) {
+			maxNumber = rs.getInt("max(number)");
+		}
+		con.close();
+		stmt.close();
+		rs.close();
+		return maxNumber;
+	}
+	
+	public void createNewAccount(int number, int userID) throws SQLException, IOException {
+		con = ConnectionPool.getInstance().getConnection();
+		stmt = con.prepareStatement(CREATE_ACCOUNT_FOR_NEW_USER);
+		stmt.setInt(1, number);
+		stmt.setInt(2, userID);
 		stmt.executeUpdate();
 		con.close();
 		stmt.close();
-		logger.log(Level.INFO, "Administrator unblock account {}", id);
+		logger.log(Level.INFO, "Create account ({}) fo new user [id={}]", number, userID);
 	}
 	
 }

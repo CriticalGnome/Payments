@@ -21,6 +21,7 @@
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
+<%-- Alert area --%>
 <c:if test="${param.action == 'newuser'}" >
 	<c:set var="alertMessage" value="messages.register.success" />
 	<c:set var="alertColor" value="alert-success" />

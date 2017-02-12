@@ -27,6 +27,9 @@
 				<c:if test="${sessionScope.role == 'User' or sessionScope.role == 'Admin'}">
 					<li class="${ userareaClass }"><a href="controller?action=userarea"><fmt:message key="nav.account" /></a></li>
 				</c:if>
+				<c:if test="${sessionScope.role == 'User' or sessionScope.role == 'Admin'}">
+					<li class="${ paymentsClass }"><a href="controller?action=payments"><fmt:message key="nav.payments" /></a></li>
+				</c:if>
 				<c:if test="${sessionScope.role == 'Admin'}">
 					<li class="${ adminareaClass }"><a href="controller?action=adminarea"><fmt:message key="nav.admin" /></a></li>
 				</c:if>

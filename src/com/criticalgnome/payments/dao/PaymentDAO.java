@@ -71,7 +71,7 @@ public class PaymentDAO {
 		stmt.setString(2, comment);
 		stmt.setInt(3, fromAccount);
 		stmt.setInt(4, toAccount);
-		stmt.executeQuery();
+		stmt.executeUpdate();
 		con.close();
 		stmt.close();
 		logger.log(Level.INFO, "Payment from {} to {} amount {} ({})", fromAccount, toAccount, amount, comment);
