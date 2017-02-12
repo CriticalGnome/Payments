@@ -13,13 +13,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.criticalgnome.payments.beans.Payment;
+import com.criticalgnome.payments.utils.ConfigParser;
 
 public class PaymentDAO {
 	
 	private static final String PAYMENT_FROM_ACCOUNT = "UPDATE account SET amount = amount - ? WHERE id = ?;";
 	private static final String PAYMENT_TO_ACCOUNT = "UPDATE account SET amount = amount + ? WHERE id = ?;";
 	private static final String PAYMENT_SAVE_IN_TABLE = "INSERT INTO payment (amount, comment, account_id, destination_id) VALUES (?,?,?,?);";
-	private static final String GET_LAST_PAYMENTS = "SELECT payment.date_time, account.number, users.first_name, users.last_name, payment.amount, payment.comment, payment.account_id FROM payment, account, users WHERE (payment.account_id = ? AND payment.destination_id = account.id AND account.client_id = users.id) OR (payment.destination_id = ? AND payment.account_id = account.id AND account.client_id = users.id) LIMIT 100;";
+	private static final String GET_LAST_PAYMENTS = "SELECT payment.date_time, account.number, users.first_name, users.last_name, payment.amount, payment.comment, payment.account_id FROM payment, account, users WHERE (payment.account_id = ? AND payment.destination_id = account.id AND account.client_id = users.id) OR (payment.destination_id = ? AND payment.account_id = account.id AND account.client_id = users.id) LIMIT ?;";
 
 	private static volatile PaymentDAO instance;
 	private static final Logger logger = LogManager.getLogger(PaymentDAO.class);
@@ -78,10 +79,12 @@ public class PaymentDAO {
 	
 	public List<Payment> getPayments (int id) throws SQLException, IOException {
 		List<Payment> payments = new ArrayList<Payment>();
+		int paymentslistMaxRecords = Integer.parseInt(ConfigParser.getValue("paymentslistmaxrecords")); 
 		con = ConnectionPool.getInstance().getConnection();
 		stmt = con.prepareStatement(GET_LAST_PAYMENTS);
 		stmt.setInt(1, id);
 		stmt.setInt(2, id);
+		stmt.setInt(3, paymentslistMaxRecords);
 		rs = stmt.executeQuery();
 		while (rs.next()) {
 			Payment payment = new Payment.Builder()

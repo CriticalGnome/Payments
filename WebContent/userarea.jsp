@@ -18,6 +18,7 @@
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
+<%-- Modal Window --%>
 <div id="myModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
