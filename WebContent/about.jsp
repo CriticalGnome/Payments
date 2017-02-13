@@ -51,7 +51,7 @@
 			<small># <fmt:message key="about.comment1" /></small><br />
 			<var>dbdriver</var> = <code>com.mysql.jdbc.Driver</code><br />
 			<small># <fmt:message key="about.comment2" /></small><br />
-			<var>dburl</var> = <code>jdbc:mysql://localhost:3306/payments?autoReconnect=true&useSSL=false</code><br />
+			<var>dburl</var> = <code>jdbc:mysql:localhost:3306paymentsautoReconnect=true&amp;useSSL=false</code><br />
 			<small># <fmt:message key="about.comment3" /></small><br />
 			<var>dbuser</var> = <code>payments</code><br />
 			<small># <fmt:message key="about.comment4" /></small><br />
