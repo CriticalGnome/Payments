@@ -65,7 +65,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<img src="images/placeholder_1280x800.jpg" alt="">
+				<img src="images/tn1.jpg" alt="">
 				<div class="caption">
 					<h3><fmt:message key="tmb1.label" /></h3>
 					<p><fmt:message key="tmb1.text" /></p>
@@ -75,7 +75,7 @@
 		</div>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<img src="images/placeholder_1280x800.jpg" alt="">
+				<img src="images/tn2.jpg" alt="">
 				<div class="caption">
 					<h3><fmt:message key="tmb2.label" /></h3>
 					<p><fmt:message key="tmb2.text" /></p>
@@ -85,7 +85,7 @@
 		</div>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<img src="images/placeholder_1280x800.jpg" alt="">
+				<img src="images/tn3.jpg" alt="">
 				<div class="caption">
 					<h3><fmt:message key="tmb3.label" /></h3>
 					<p><fmt:message key="tmb3.text" /></p>
