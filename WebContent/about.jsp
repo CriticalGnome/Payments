@@ -17,8 +17,57 @@
 <%@ include file="inc/navbar.jsp"%>
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">
-			<p class="text-justify">Under construction</p>
+		<div class="col-md-10 col-md-offset-1">
+			<h2><fmt:message key="about.header" /></h2>
+			<blockquote><fmt:message key="about.quote" /></blockquote>
+			
+			<p><fmt:message key="about.line1" /></p>
+			<p><fmt:message key="about.line2" /><p>
+		</div>
+		<div class="col-sm-4 col-sm-offset-1">
+			<table class="table">
+				<tr>
+					<th><fmt:message key="about.table.header1" /></th>
+					<th><fmt:message key="about.table.header2" /></th>
+					<th><fmt:message key="about.table.header3" /></th>
+				</tr>
+				<tr>
+					<td>admin@test.com</td>
+					<td>123</td>
+					<td><fmt:message key="about.table.role.admin" /></td>
+				</tr>
+				<tr>
+					<td>user@test.com</td>
+					<td>123</td>
+					<td><fmt:message key="about.table.role.user" /></td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-md-10 col-md-offset-1">
+			<p><fmt:message key="about.line3" /></p>
+			<p><fmt:message key="about.line4" /> <button type="button" class="btn btn-default btn-xs">
+  			<span class="glyphicon glyphicon-globe" aria-hidden="true"></span></button> <fmt:message key="about.line5" /></p>
+			<p><fmt:message key="about.line6" /><code>WebContent/WEB-INF/classes/config.properties</code>:</p>
+			<small># <fmt:message key="about.comment1" /></small><br />
+			<var>dbdriver</var> = <code>com.mysql.jdbc.Driver</code><br />
+			<small># <fmt:message key="about.comment2" /></small><br />
+			<var>dburl</var> = <code>jdbc:mysql://localhost:3306/payments?autoReconnect=true&useSSL=false</code><br />
+			<small># <fmt:message key="about.comment3" /></small><br />
+			<var>dbuser</var> = <code>payments</code><br />
+			<small># <fmt:message key="about.comment4" /></small><br />
+			<var>dbpassword</var> = <code>payments</code><br />
+			<small># <fmt:message key="about.comment5" /></small><br />
+			<var>dbmaxconnections</var> = <code>100</code><br />
+			<small># <fmt:message key="about.comment6" /></small><br />
+			<var>paymentslistmaxrecords</var> = <code>100</code><br />
+		</div>
+		<div class="col-md-10 col-md-offset-1 text-right">
+			<br>
+			<address>
+				<strong><fmt:message key="about.author" /></strong><br>
+				<fmt:message key="about.name" /><br>
+				<a href="mailto:lord.skiminok@gmail.com">lord.skiminok@gmail.com</a>
+			</address>
 		</div>
 	</div>
 </div>
