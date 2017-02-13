@@ -36,7 +36,7 @@ CREATE TABLE `account` (
   UNIQUE KEY `number_UNIQUE` (`number`),
   KEY `fk_account_client1_idx` (`client_id`),
   CONSTRAINT `fk_account_client1` FOREIGN KEY (`client_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,100001,1000,0,NULL,1),(2,100002,500,0,NULL,2);
+INSERT INTO `account` VALUES (3,100001,0,0,NULL,21),(4,100002,0,0,NULL,22);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,9 +58,9 @@ DROP TABLE IF EXISTS `credit_card`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `credit_card` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `number` varchar(16) NOT NULL,
-  `expiration_month` tinyint(4) NOT NULL,
-  `expiration_year` tinyint(4) NOT NULL,
+  `number` varchar(19) NOT NULL,
+  `expiration_month` varchar(2) NOT NULL,
+  `expiration_year` varchar(2) NOT NULL,
   `comment` varchar(200) DEFAULT NULL,
   `account_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`account_id`),
@@ -68,7 +68,7 @@ CREATE TABLE `credit_card` (
   UNIQUE KEY `number_UNIQUE` (`number`),
   KEY `fk_credit_card_account_idx` (`account_id`),
   CONSTRAINT `fk_credit_card_account` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +77,7 @@ CREATE TABLE `credit_card` (
 
 LOCK TABLES `credit_card` WRITE;
 /*!40000 ALTER TABLE `credit_card` DISABLE KEYS */;
-INSERT INTO `credit_card` VALUES (1,'1111222233334444',12,18,NULL,1),(2,'5555666677778888',4,19,NULL,1),(3,'0000111100001111',12,20,NULL,2);
+INSERT INTO `credit_card` VALUES (5,'7775-6152-2051-7466','02','18',NULL,3),(7,'5396-9233-8324-1057','02','18',NULL,4);
 /*!40000 ALTER TABLE `credit_card` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +131,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,7 +140,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Сергей','Калиновский','lord.skiminok@gmail.com','qwerty','Admin',NULL),(2,'Ирина','Калиновская','irina.kalinovsky@gmail.com','12345','User',NULL),(3,'Вовочка','Пахомов','vova@mail.ru','12345','User',NULL),(16,'Василий','Васильев','vasya@mail.ru','12345','User',NULL),(18,'Михаил','Светлов','misha@tut.by','12345','User',NULL),(19,'Камаз','Отходов','kamaz@mail.ru','kamaz','User',NULL),(20,'Степан','Степанов','ancle.stepan@mail.ru','12345','User',NULL);
+INSERT INTO `users` VALUES (21,'Test','Admin','admin@test.com','123','Admin',NULL),(22,'Test','User','user@test.com','123','User',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -153,4 +153,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-10 23:19:15
+-- Dump completed on 2017-02-13 10:42:26

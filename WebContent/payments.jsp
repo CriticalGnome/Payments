@@ -21,7 +21,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h3 class="text-center"><fmt:message key="userarea.payments.header" /></h3>
+			<h3 class="text-center">${maxRecords} <fmt:message key="userarea.payments.header" /></h3>
 			<table class="table table-striped table-condensed">
 				<tr>
 					<th><fmt:message key="userarea.payments.no" /></th>
@@ -36,10 +36,10 @@
 				<tr>
 					<td>${i}</td>
 					<td>${payments[i-1].dateTime}</td>
-					<c:if test="${payments[i-1].accountID == sessionScope.userID}">
+					<c:if test="${payments[i-1].accountId == accountID}">
 						<td><span class="label label-danger"><fmt:message key="userarea.payments.to" /></span></td>
 					</c:if>
-					<c:if test="${payments[i-1].accountID != sessionScope.userID}">
+					<c:if test="${payments[i-1].accountId != accountID}">
 						<td><span class="label label-success"><fmt:message key="userarea.payments.from" /></span></td>
 					</c:if>
 					<td>${payments[i-1].number}</td>

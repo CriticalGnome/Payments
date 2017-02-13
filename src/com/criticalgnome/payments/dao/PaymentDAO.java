@@ -77,6 +77,13 @@ public class PaymentDAO {
 		logger.log(Level.INFO, "Payment from {} to {} amount {} ({})", fromAccount, toAccount, amount, comment);
 	}
 	
+	/**
+	 * Get last payments from/to current user. Limit saved in config
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public List<Payment> getPayments (int id) throws SQLException, IOException {
 		List<Payment> payments = new ArrayList<Payment>();
 		int paymentslistMaxRecords = Integer.parseInt(ConfigParser.getValue("paymentslistmaxrecords")); 
@@ -94,7 +101,7 @@ public class PaymentDAO {
 					.lastName(rs.getString("last_name"))
 					.amount(rs.getInt("amount"))
 					.comment(rs.getString("comment"))
-					.accountID(rs.getInt("account_id"))
+					.accountId(rs.getInt("account_id"))
 					.build();
 			payments.add(payment);
 		}

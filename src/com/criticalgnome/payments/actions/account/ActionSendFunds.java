@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -21,9 +20,8 @@ public class ActionSendFunds implements Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = null;
-		HttpSession session = request.getSession();
-		int fromAccount = (int) session.getAttribute("userID"); 
-		int toAccount = Integer.parseInt(request.getParameter("id"));
+		int fromAccount = Integer.parseInt(request.getParameter("fromAccount"));
+		int toAccount = Integer.parseInt(request.getParameter("toAccount"));
 		int amount = Integer.parseInt(request.getParameter("amount"));
 		String comment = request.getParameter("comment");
 		try {

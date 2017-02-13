@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.sql.SQLException;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,8 +17,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.criticalgnome.payments.actions.Action;
+import com.criticalgnome.payments.beans.Account;
+import com.criticalgnome.payments.beans.Card;
 import com.criticalgnome.payments.dao.AccountDAO;
+import com.criticalgnome.payments.dao.CardDAO;
 import com.criticalgnome.payments.dao.UserDAO;
+import com.criticalgnome.payments.utils.NewCard;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 public class ActionRegister implements Action {
@@ -99,10 +104,10 @@ public class ActionRegister implements Action {
 				logger.log(Level.FATAL, "Input/Output Exception");
 				page = "error.jsp?reason=Input/Output Exception";
 			}
-//			Get new user ID by email
-			int id = 0;
+//			Get created user ID by email
+			int userId = 0;
 			try {
-				id = UserDAO.getInstance().getId(request.getParameter("email"));
+				userId = UserDAO.getInstance().getId(request.getParameter("email"));
 			} catch (SQLException e) {
 				logger.log(Level.FATAL, "SQL Exception in get ID area");
 				page = "error.jsp?reason=Input/SQL Exception";
@@ -117,11 +122,33 @@ public class ActionRegister implements Action {
 			}
 //			Create account for new user
 			try {
-				AccountDAO.getInstance().createNewAccount(maxNumber+1, id);
+				AccountDAO.getInstance().createNewAccount(maxNumber+1, userId);
 			} catch (SQLException e) {
 				logger.log(Level.FATAL, "SQL Exception in create account area");
 				page = "error.jsp?reason=Input/SQL Exception";
 			}
+//			Get created account ID
+			int accountId = 0;
+			try {
+				Account account = AccountDAO.getInstance().getAccount(userId);
+				accountId = account.getId();
+			} catch (SQLException e) {
+				logger.log(Level.FATAL, "SQL Exception in get account area");
+				page = "error.jsp?reason=Input/SQL Exception";
+			}
+//			Create card(s) for new Account
+			Random random = new Random();
+			int count = random.nextInt(2)+1;
+			for (int i = 0; i < count; i++) {
+				Card card = NewCard.createCard();
+				try {
+					CardDAO.getInstance().createCard(card, accountId);
+				} catch (SQLException e) {
+					logger.log(Level.FATAL, "SQL Exception in create card area");
+					page = "error.jsp?reason=Input/SQL Exception";
+				}
+			}
+			
 		}
 		return page;
 	}

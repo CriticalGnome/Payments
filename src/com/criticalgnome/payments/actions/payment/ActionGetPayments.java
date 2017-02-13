@@ -15,23 +15,35 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.criticalgnome.payments.actions.Action;
+import com.criticalgnome.payments.beans.Account;
 import com.criticalgnome.payments.beans.Payment;
+import com.criticalgnome.payments.dao.AccountDAO;
 import com.criticalgnome.payments.dao.PaymentDAO;
+import com.criticalgnome.payments.utils.ConfigParser;
 
-public class ActionPayments implements Action {
-	private static final Logger logger = LogManager.getLogger(ActionPayments.class);
+public class ActionGetPayments implements Action {
+	private static final Logger logger = LogManager.getLogger(ActionGetPayments.class);
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		int userID = (int) session.getAttribute("userID");
+		Account account = null;
+		try {
+			account = AccountDAO.getInstance().getAccount(userID);
+		} catch (SQLException e1) {
+			logger.log(Level.FATAL, "SQL Exception");
+		}
 		List<Payment> payments = new ArrayList<Payment>();
 		try {
-			payments = PaymentDAO.getInstance().getPayments(userID);
-		} catch (SQLException e) {
+			payments = PaymentDAO.getInstance().getPayments(account.getId());
+		} catch (SQLException e2) {
 			logger.log(Level.FATAL, "SQL Exception");
 		}
 		int paymentsCount = payments.size();
+		int maxRecords = Integer.parseInt(ConfigParser.getValue("paymentslistmaxrecords"));
+		request.setAttribute("accountID", account.getId());
+		request.setAttribute("maxRecords", maxRecords);
 		request.setAttribute("payments", payments);
 		request.setAttribute("paymentsCount", paymentsCount);
 		request.getRequestDispatcher("payments.jsp").forward(request, response);

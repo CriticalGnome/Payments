@@ -12,7 +12,7 @@ public class Payment {
 	private String lastName;
 	private int amount;
 	private String Comment;
-	private int accountID;
+	private int accountId;
 	
 	public static class Builder {
 		private String dateTime;
@@ -21,7 +21,7 @@ public class Payment {
 		private String lastName;
 		private int amount;
 		private String Comment;
-		private int accountID;
+		private int accountId;
 		
 		public Builder dateTime(String dateTime) {
 			this.dateTime = dateTime;
@@ -53,8 +53,8 @@ public class Payment {
 			return this;
 		}
 		
-		public Builder accountID(int accountID) {
-			this.accountID = accountID;
+		public Builder accountId(int accountId) {
+			this.accountId = accountId;
 			return this;
 		}
 		
@@ -70,7 +70,7 @@ public class Payment {
 		lastName = builder.lastName;
 		amount = builder.amount;
 		Comment = builder.Comment;
-		accountID = builder.accountID;
+		accountId = builder.accountId;
 	}
 
 	/**
@@ -81,10 +81,10 @@ public class Payment {
 	 * @param lastName
 	 * @param amount
 	 * @param comment
-	 * @param accountID
+	 * @param accountId
 	 */
 	public Payment(String dateTime, int number, String firstName, String lastName, int amount, String comment,
-			int accountID) {
+			int accountId) {
 		super();
 		this.dateTime = dateTime;
 		this.number = number;
@@ -92,7 +92,7 @@ public class Payment {
 		this.lastName = lastName;
 		this.amount = amount;
 		Comment = comment;
-		this.accountID = accountID;
+		this.accountId = accountId;
 	}
 	
 	/**
@@ -105,7 +105,7 @@ public class Payment {
 	@Override
 	public String toString() {
 		return "Payment [dateTime=" + dateTime + ", number=" + number + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", amount=" + amount + ", Comment=" + Comment + ", accountID=" + accountID + "]";
+				+ lastName + ", amount=" + amount + ", Comment=" + Comment + ", accountId=" + accountId + "]";
 	}
 
 	@Override
@@ -113,7 +113,7 @@ public class Payment {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((Comment == null) ? 0 : Comment.hashCode());
-		result = prime * result + accountID;
+		result = prime * result + accountId;
 		result = prime * result + amount;
 		result = prime * result + ((dateTime == null) ? 0 : dateTime.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
@@ -136,7 +136,7 @@ public class Payment {
 				return false;
 		} else if (!Comment.equals(other.Comment))
 			return false;
-		if (accountID != other.accountID)
+		if (accountId != other.accountId)
 			return false;
 		if (amount != other.amount)
 			return false;
@@ -208,12 +208,12 @@ public class Payment {
 		Comment = comment;
 	}
 
-	public int getAccountID() {
-		return accountID;
+	public int getAccountId() {
+		return accountId;
 	}
 
-	public void setAccountID(int accountID) {
-		this.accountID = accountID;
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
 	}
 	
 }

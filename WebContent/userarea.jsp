@@ -93,6 +93,27 @@
   	</div>
 	<br>
 
+	<%-- Cards area --%>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="text-center"><h3><fmt:message key="userarea.cards" /></h3></div>
+			<table class="table table-condensed">
+				<tr>
+					<th>N</th>
+					<th>NUMBER</th>
+					<th>EXP</th>
+				</tr>
+				<c:forEach var="i" begin="1" end="${cardsCount}">
+					<tr>
+						<td>${i}</td>
+						<td>${cards[i-1].number}</td>
+						<td>${cards[i-1].expMonth}/${cards[i-1].expYear}</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
+
 </div>
 
 <%-- Warning Modal Windows --%>
@@ -135,7 +156,7 @@
 					</div>
 					<div class="form-group">
 						<label for="acountId"><fmt:message key="userarea.dest" /></label>
-						<select name="id" name="accountId" class="form-control" size="5">
+						<select name="toAccount" name="accountId" class="form-control" size="5">
 							<c:forEach var="i" begin="1" end="${availableAccountsCount}">
 								<c:if test="${availableAccounts[i-1].id != account.id}">
 									<option value="${availableAccounts[i-1].id}">[${availableAccounts[i-1].number}] ${availableAccounts[i-1].firstName} ${availableAccounts[i-1].lastName}</option>
@@ -146,6 +167,7 @@
 				</div>
 				<div class="modal-footer">
 					<input name="action" id="actionSend" type="hidden" value="sendFunds">
+					<input name="fromAccount" type="hidden" value="${account.id}">
 					<button name="submit" name="sendSubmit" class="btn btn-success" type="submit"><fmt:message key="userarea.modal.send" /></button>
 					<button name="button" name="sendCancel" class="btn btn-default" type="button" data-dismiss="modal"><fmt:message key="userarea.modal.cancel" /></button>
 				</div>

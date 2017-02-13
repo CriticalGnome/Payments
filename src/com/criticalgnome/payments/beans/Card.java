@@ -7,9 +7,9 @@ package com.criticalgnome.payments.beans;
  */
 public class Card {
 	private int id;
-	private long number;
-	private int expMonth;
-	private int expYear;
+	private String number;
+	private String expMonth;
+	private String expYear;
 	private String comment;
 	
 	/**
@@ -17,9 +17,9 @@ public class Card {
 	 */
 	public static class Builder {
 		private int id;
-		private long number;
-		private int expMonth;
-		private int expYear;
+		private String number;
+		private String expMonth;
+		private String expYear;
 		private String comment;
 		
 		public Builder id(int id) {
@@ -27,17 +27,17 @@ public class Card {
 			return this;
 		}
 		
-		public Builder number(long number) {
+		public Builder number(String number) {
 			this.number = number;
 			return this;
 		}
 		
-		public Builder expMonth(int expMonth) {
+		public Builder expMonth(String expMonth) {
 			this.expMonth = expMonth;
 			return this;
 		}
 		
-		public Builder expYear(int expYear) {
+		public Builder expYear(String expYear) {
 			this.expYear = expYear;
 			return this;
 		}
@@ -68,7 +68,7 @@ public class Card {
 	 * @param expYear
 	 * @param comment
 	 */
-	public Card(int id, long number, int expMonth, int expYear, String comment) {
+	public Card(int id, String number, String expMonth, String expYear, String comment) {
 		super();
 		this.id = id;
 		this.number = number;
@@ -95,10 +95,10 @@ public class Card {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
-		result = prime * result + expMonth;
-		result = prime * result + expYear;
+		result = prime * result + ((expMonth == null) ? 0 : expMonth.hashCode());
+		result = prime * result + ((expYear == null) ? 0 : expYear.hashCode());
 		result = prime * result + id;
-		result = prime * result + (int) (number ^ (number >>> 32));
+		result = prime * result + ((number == null) ? 0 : number.hashCode());
 		return result;
 	}
 
@@ -116,13 +116,22 @@ public class Card {
 				return false;
 		} else if (!comment.equals(other.comment))
 			return false;
-		if (expMonth != other.expMonth)
+		if (expMonth == null) {
+			if (other.expMonth != null)
+				return false;
+		} else if (!expMonth.equals(other.expMonth))
 			return false;
-		if (expYear != other.expYear)
+		if (expYear == null) {
+			if (other.expYear != null)
+				return false;
+		} else if (!expYear.equals(other.expYear))
 			return false;
 		if (id != other.id)
 			return false;
-		if (number != other.number)
+		if (number == null) {
+			if (other.number != null)
+				return false;
+		} else if (!number.equals(other.number))
 			return false;
 		return true;
 	}
@@ -135,27 +144,27 @@ public class Card {
 		this.id = id;
 	}
 
-	public long getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(long number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 
-	public int getExpMonth() {
+	public String getExpMonth() {
 		return expMonth;
 	}
 
-	public void setExpMonth(int expMonth) {
+	public void setExpMonth(String expMonth) {
 		this.expMonth = expMonth;
 	}
 
-	public int getExpYear() {
+	public String getExpYear() {
 		return expYear;
 	}
 
-	public void setExpYear(int expYear) {
+	public void setExpYear(String expYear) {
 		this.expYear = expYear;
 	}
 
@@ -166,5 +175,5 @@ public class Card {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	
+
 }
