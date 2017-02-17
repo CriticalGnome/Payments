@@ -140,7 +140,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (21,'Test','Admin','admin@test.com','123','Admin',NULL),(22,'Test','User','user@test.com','123','User',NULL);
+INSERT INTO `users` VALUES (21,'Test','Admin','admin@test.com','202cb962ac59075b964b07152d234b70','Admin',NULL),(22,'Test','User','user@test.com','202cb962ac59075b964b07152d234b70','User',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

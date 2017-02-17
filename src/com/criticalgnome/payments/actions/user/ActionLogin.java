@@ -1,6 +1,7 @@
 package com.criticalgnome.payments.actions.user;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 import com.criticalgnome.payments.actions.Action;
 import com.criticalgnome.payments.beans.User;
 import com.criticalgnome.payments.dao.UserDAO;
+import com.criticalgnome.payments.utils.MD5;
 
 public class ActionLogin implements Action {
 	private static final Logger logger = LogManager.getLogger(ActionLogin.class);
@@ -24,7 +26,7 @@ public class ActionLogin implements Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = null;
 		try {
-			User user = UserDAO.getInstance().getUser(request.getParameter("email"), request.getParameter("password"));
+			User user = UserDAO.getInstance().getUser(request.getParameter("email"), MD5.encode(request.getParameter("password")));
 			if (user != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("isAuthorized", "yes");
@@ -33,7 +35,7 @@ public class ActionLogin implements Action {
 				logger.log(Level.INFO, "User {} [id={}] get login by role {})", user.getEmail(), user.getId(), user.getRole());
 				page = "controller?action=userarea";
 			} else {
-				logger.log(Level.WARN, "Incorrect user data (email=\"{}\", password=\"{}\")", request.getParameter("email"), request.getParameter("password"));
+				logger.log(Level.WARN, "Incorrect user data (email=\"{}\")", request.getParameter("email"));
 				page = "login.jsp?action=wronglogin";
 			}
 		} catch (SQLException e) {
@@ -42,6 +44,9 @@ public class ActionLogin implements Action {
 		} catch (IOException e) {
 			logger.log(Level.FATAL, "Input/Output error");
 			page = "error.jsp?reason=Input/Output Error";
+		} catch (NoSuchAlgorithmException e) {
+			logger.log(Level.FATAL, "MD5 encode exception");
+			page = "error.jsp?reason=Password Encoding error";
 		}
 		return page;
 	}

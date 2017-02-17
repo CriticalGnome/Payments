@@ -3,6 +3,7 @@ package com.criticalgnome.payments.actions.user;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -22,6 +23,7 @@ import com.criticalgnome.payments.beans.Card;
 import com.criticalgnome.payments.dao.AccountDAO;
 import com.criticalgnome.payments.dao.CardDAO;
 import com.criticalgnome.payments.dao.UserDAO;
+import com.criticalgnome.payments.utils.MD5;
 import com.criticalgnome.payments.utils.NewCard;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
@@ -92,7 +94,7 @@ public class ActionRegister implements Action {
 			page = "index.jsp?action=newuser";
 //			Add user into database
 			try {
-				UserDAO.getInstance().addUser(request.getParameter("firstName"), request.getParameter("lastName"), request.getParameter("email"), request.getParameter("password"));
+				UserDAO.getInstance().addUser(request.getParameter("firstName"), request.getParameter("lastName"), request.getParameter("email"), MD5.encode(request.getParameter("password")));
 			} catch (MySQLIntegrityConstraintViolationException e) {
 				logger.log(Level.WARN, "Email \"{}\" already exits", request.getParameter("email"));
 				page = "register.jsp?action=emailalreadyexist";
@@ -103,6 +105,9 @@ public class ActionRegister implements Action {
 			} catch (IOException e) {
 				logger.log(Level.FATAL, "Input/Output Exception");
 				page = "error.jsp?reason=Input/Output Exception";
+			} catch (NoSuchAlgorithmException e) {
+				logger.log(Level.FATAL, "MD5 encode exception");
+				page = "error.jsp?reason=Password Encoding error";
 			}
 //			Get created user ID by email
 			int userId = 0;
