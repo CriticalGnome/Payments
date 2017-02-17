@@ -18,7 +18,7 @@ import com.criticalgnome.payments.beans.BlockedAccount;
 
 /**
  * @author CriticalGnome
- * Data Access to users table
+ * Data Access to account table
  */
 public class AccountDAO {
 	
@@ -188,6 +188,12 @@ public class AccountDAO {
 		return availableAccounts;
 	}
 	
+	/**
+	 * Get last account number
+	 * @return
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public int getmaxAccountNumber() throws SQLException, IOException {
 		int maxNumber = 0;
 		con = ConnectionPool.getInstance().getConnection();
@@ -202,6 +208,13 @@ public class AccountDAO {
 		return maxNumber;
 	}
 	
+	/**
+	 * Create new Account in Database
+	 * @param number
+	 * @param userID
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public void createNewAccount(int number, int userID) throws SQLException, IOException {
 		con = ConnectionPool.getInstance().getConnection();
 		stmt = con.prepareStatement(CREATE_ACCOUNT_FOR_NEW_USER);

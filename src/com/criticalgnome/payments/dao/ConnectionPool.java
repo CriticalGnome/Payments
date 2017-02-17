@@ -12,6 +12,10 @@ import org.apache.logging.log4j.Logger;
 
 import com.criticalgnome.payments.utils.ConfigParser;
 
+/**
+ * @author CriticalGnome
+ *
+ */
 public class ConnectionPool {
 
 	private Logger logger = LogManager.getLogger(ConnectionPool.class);
@@ -47,6 +51,10 @@ public class ConnectionPool {
 		return instance;
 	}
     
+    /**
+     * Return connection
+     * @return
+     */
     public synchronized Connection getConnection() {
     	Connection connection = null;
     	if (queue.isEmpty()) {
@@ -60,10 +68,17 @@ public class ConnectionPool {
 		return connection;
     }
     
+    /**
+     * Add used connection to Queue
+     * @param connection
+     */
     public synchronized void releaseConnection(Connection connection) {
     	queue.add(connection);
     }
     
+    /**
+     * Create new connection
+     */
     public void createConnection() {
     	if (queue.size() < maxConnections) {
     		try {

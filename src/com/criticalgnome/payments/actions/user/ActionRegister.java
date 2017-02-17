@@ -27,6 +27,10 @@ import com.criticalgnome.payments.utils.MD5;
 import com.criticalgnome.payments.utils.NewCard;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
+/**
+ * @author CriticalGnome
+ *
+ */
 public class ActionRegister implements Action {
 	private static final Logger logger = LogManager.getLogger(ActionRegister.class);
 

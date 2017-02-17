@@ -21,6 +21,10 @@ import com.criticalgnome.payments.dao.AccountDAO;
 import com.criticalgnome.payments.dao.PaymentDAO;
 import com.criticalgnome.payments.utils.ConfigParser;
 
+/**
+ * @author CriticalGnome
+ *
+ */
 public class ActionGetPayments implements Action {
 	private static final Logger logger = LogManager.getLogger(ActionGetPayments.class);
 

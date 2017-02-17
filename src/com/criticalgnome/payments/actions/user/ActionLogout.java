@@ -9,6 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import com.criticalgnome.payments.actions.Action;
 
+/**
+ * @author CriticalGnome
+ *
+ */
 public class ActionLogout implements Action {
 
 	@Override

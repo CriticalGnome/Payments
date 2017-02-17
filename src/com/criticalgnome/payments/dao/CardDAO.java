@@ -16,7 +16,7 @@ import com.criticalgnome.payments.beans.Card;
 
 /**
  * @author CriticalGnome
- * Data Access to users table
+ * Data Access to card table
  */
 public class CardDAO {
 	
@@ -48,7 +48,7 @@ public class CardDAO {
 	private static ResultSet rs;
 	
 	/**
-	 * Get account by user id
+	 * Get all User's cards by ID
 	 * @param id
 	 * @return
 	 * @throws SQLException
@@ -76,6 +76,13 @@ public class CardDAO {
 		return cards;
 	}
 	
+	/**
+	 * Create new Card record
+	 * @param card
+	 * @param accountId
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public void createCard(Card card, int accountId) throws SQLException, IOException {
 		con = ConnectionPool.getInstance().getConnection();
 		stmt = con.prepareStatement(ADD_NEW_CARD);

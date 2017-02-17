@@ -15,6 +15,10 @@ import org.apache.logging.log4j.Logger;
 import com.criticalgnome.payments.beans.Payment;
 import com.criticalgnome.payments.utils.ConfigParser;
 
+/**
+ * @author CriticalGnome
+ * Data Access to payment table
+ */
 public class PaymentDAO {
 	
 	private static final String PAYMENT_FROM_ACCOUNT = "UPDATE account SET amount = amount - ? WHERE id = ?;";

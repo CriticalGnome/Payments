@@ -9,6 +9,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
+/**
+ * @author CriticalGnome
+ * Encode request/response to UTF-8
+ */
 @WebFilter("/controller")
 public class EncodingFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

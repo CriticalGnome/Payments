@@ -17,6 +17,10 @@ import com.criticalgnome.payments.actions.Action;
 import com.criticalgnome.payments.beans.BlockedAccount;
 import com.criticalgnome.payments.dao.AccountDAO;
 
+/**
+ * @author CriticalGnome
+ *
+ */
 public class ActionAdminarea implements Action {
 	private static final Logger logger = LogManager.getLogger(ActionAdminarea.class);
 	

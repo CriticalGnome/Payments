@@ -23,6 +23,10 @@ import com.criticalgnome.payments.dao.AccountDAO;
 import com.criticalgnome.payments.dao.CardDAO;
 import com.criticalgnome.payments.dao.UserDAO;
 
+/**
+ * @author CriticalGnome
+ *
+ */
 public class ActionUserarea implements Action {
 	private static final Logger logger = LogManager.getLogger(ActionUserarea.class);
 	

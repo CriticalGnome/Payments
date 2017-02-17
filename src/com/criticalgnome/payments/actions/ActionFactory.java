@@ -3,6 +3,10 @@ package com.criticalgnome.payments.actions;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @author CriticalGnome
+ *
+ */
 public class ActionFactory {
 
 	public static Action getAction(HttpServletRequest request, HttpServletResponse responce) {

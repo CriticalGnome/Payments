@@ -15,6 +15,10 @@ import org.apache.logging.log4j.Logger;
 import com.criticalgnome.payments.actions.Action;
 import com.criticalgnome.payments.dao.UserDAO;
 
+/**
+ * @author CriticalGnome
+ *
+ */
 public class ActionUpdateUserName implements Action {
 	private static final Logger logger = LogManager.getLogger(ActionUpdateUserName.class);
 

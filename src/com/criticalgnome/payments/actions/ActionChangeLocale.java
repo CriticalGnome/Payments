@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Change current locale from 'ru' to 'en' and vice versa
+ * @author CriticalGnome
+ *
+ */
 public class ActionChangeLocale implements Action {
 
 	@Override

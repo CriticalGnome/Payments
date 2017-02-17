@@ -14,6 +14,10 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class SecurityFilter
  */
+/**
+ * @author CriticalGnome
+ * Restrict unauthorized access to User Area
+ */
 @WebFilter("/userarea.jsp")
 public class SecurityUserFilter implements Filter {
 

@@ -18,6 +18,10 @@ import com.criticalgnome.payments.beans.User;
 import com.criticalgnome.payments.dao.UserDAO;
 import com.criticalgnome.payments.utils.MD5;
 
+/**
+ * @author CriticalGnome
+ *
+ */
 public class ActionLogin implements Action {
 	private static final Logger logger = LogManager.getLogger(ActionLogin.class);
 

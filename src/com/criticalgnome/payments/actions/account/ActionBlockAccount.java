@@ -15,6 +15,10 @@ import org.apache.logging.log4j.Logger;
 import com.criticalgnome.payments.actions.Action;
 import com.criticalgnome.payments.dao.AccountDAO;
 
+/**
+ * @author CriticalGnome
+ *
+ */
 public class ActionBlockAccount implements Action {
 	private static final Logger logger = LogManager.getLogger(ActionBlockAccount.class);
 

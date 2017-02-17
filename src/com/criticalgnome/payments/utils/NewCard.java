@@ -5,10 +5,18 @@ import java.util.Random;
 
 import com.criticalgnome.payments.beans.Card;
 
+/**
+ * @author CriticalGnome
+ * Create New Card
+ */
 public class NewCard {
 	static final Random random = new Random();
 	static Calendar calendar = Calendar.getInstance();
 	
+	/**
+	 * Emulating example Card data
+	 * @return
+	 */
 	public static Card createCard() {
 		String number = "";
 		String month = "";
