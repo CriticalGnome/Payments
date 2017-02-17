@@ -6,8 +6,6 @@ import java.net.URLEncoder;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.Random;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +23,7 @@ import com.criticalgnome.payments.dao.CardDAO;
 import com.criticalgnome.payments.dao.UserDAO;
 import com.criticalgnome.payments.utils.MD5;
 import com.criticalgnome.payments.utils.NewCard;
+import com.criticalgnome.payments.utils.RegExChecker;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 /**
@@ -43,7 +42,7 @@ public class ActionRegister implements Action {
 			isError = true;
 			page = page + "fnError=empty&";
 		} else {
-			if (!checkWithRegExp(request.getParameter("firstName"))) {
+			if (!RegExChecker.checkWithRegExp(request.getParameter("firstName"))) {
 				isError = true;
 				page = page + "fnError=wrong&";
 				logger.log(Level.WARN, "Incorrect character in First Name detected: \"{}\"", request.getParameter("firstName"));
@@ -58,7 +57,7 @@ public class ActionRegister implements Action {
 			isError = true;
 			page = page + "lnError=empty&";
 		} else {
-			if (!checkWithRegExp(request.getParameter("lastName"))) {
+			if (!RegExChecker.checkWithRegExp(request.getParameter("lastName"))) {
 				isError = true;
 				page = page + "lnError=wrong&";
 				logger.log(Level.WARN, "Incorrect character in Last Name detected: \"{}\"", request.getParameter("lastName"));
@@ -83,7 +82,7 @@ public class ActionRegister implements Action {
 			isError = true;
 			page = page + "pwError=empty&";
 		} else {
-			if (!checkWithRegExp(request.getParameter("password"))) {
+			if (!RegExChecker.checkWithRegExp(request.getParameter("password"))) {
 				isError = true;
 				page = page + "pwError=wrong&";
 				logger.log(Level.WARN, "Incorrect character in Password detected: \"{}\"", request.getParameter("password"));
@@ -104,8 +103,7 @@ public class ActionRegister implements Action {
 				page = "register.jsp?action=emailalreadyexist";
 			} catch (SQLException e) {
 				logger.log(Level.FATAL, "SQL Exception in add user area");
-				e.printStackTrace();
-				page = "error.jsp?reason=Input/SQL Exception";
+				page = "error.jsp?reason=SQL Exception";
 			} catch (IOException e) {
 				logger.log(Level.FATAL, "Input/Output Exception");
 				page = "error.jsp?reason=Input/Output Exception";
@@ -161,10 +159,5 @@ public class ActionRegister implements Action {
 		}
 		return page;
 	}
-	public static boolean checkWithRegExp(String userNameString){  
-        Pattern p = Pattern.compile("^[а-яА-ЯёЁa-zA-Z0-9]+$");  
-        Matcher m = p.matcher(userNameString);  
-        return m.matches();  
-    }
 
 }
