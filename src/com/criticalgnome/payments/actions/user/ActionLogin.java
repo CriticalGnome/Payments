@@ -31,7 +31,7 @@ public class ActionLogin implements Action {
 				session.setAttribute("userID", user.getId());
 				session.setAttribute("role", user.getRole());
 				logger.log(Level.INFO, "User {} [id={}] get login by role {})", user.getEmail(), user.getId(), user.getRole());
-				page = "index.jsp?action=login";
+				page = "controller?action=userarea";
 			} else {
 				logger.log(Level.WARN, "Incorrect user data (email=\"{}\", password=\"{}\")", request.getParameter("email"), request.getParameter("password"));
 				page = "login.jsp?action=wronglogin";

@@ -5,11 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@ include file="inc/uselocale.jsp" %>
-<c:if test="${param.action == 'logout'}" >
-	<c:remove var="isAuthorized"/>
-	<c:remove var="userID"/>
-	<c:remove var="role"/>
-</c:if>
 
 <!DOCTYPE html>
 <html>
@@ -23,22 +18,6 @@
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
-
-<c:if test="${param.action == 'wronglogin'}" >
-<div class="container">
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<div class="alert alert-danger alert-dismissible fade in" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<fmt:message key="login.wrong.pass"/>
-			</div>
-		</div>
-	</div>
-</div>
-</c:if>
-
 
 <div class="container">
 	<div class="row">

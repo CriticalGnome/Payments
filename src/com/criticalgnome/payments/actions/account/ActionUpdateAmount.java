@@ -25,6 +25,10 @@ public class ActionUpdateAmount implements Action {
 		int userID = (int) session.getAttribute("userID");
 		int amount = Integer.parseInt(request.getParameter("amount"));
 		int amountAdd = Integer.parseInt(request.getParameter("amountAdd"));
+		if (amountAdd <= 0) {
+			page = "error.jsp?reason=Illegal Value";
+			return page;
+		}
 		amount = amount + amountAdd;
 		try {
 			AccountDAO.getInstance().updateAmount(userID, amount);

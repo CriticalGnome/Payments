@@ -34,23 +34,52 @@
 					<li class="${ adminareaClass }"><a href="controller?action=adminarea"><fmt:message key="nav.admin" /></a></li>
 				</c:if>
 			</ul>
-			<form action="login.jsp" class="navbar-form navbar-right">
 			<c:if test="${empty sessionScope.isAuthorized}" >
-				<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<fmt:message key="nav.button.login" /></button>
+				<form action="login.jsp" class="navbar-form navbar-right">
+					<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<fmt:message key="nav.button.login" /></button>
+				</form>
 			</c:if>
 			<c:if test="${sessionScope.isAuthorized == 'yes'}" >
-				<input type="hidden" name="action" value="logout">
-				<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<fmt:message key="nav.button.logout" /></button>
+				<form action="controller" class="navbar-form navbar-right">
+					<input type="hidden" name="action" value="logout">
+					<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<fmt:message key="nav.button.logout" /></button>
+				</form>
 			</c:if>
-			</form>
-			<form action="index.jsp" class="navbar-form navbar-right">
-			<c:if test="${sessionScope.locale == 'locale_en_US' or empty sessionScope.locale}" >
-				<button type="submit" name="lang" value="ru" class="btn btn-default"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></button>
-			</c:if>
-			<c:if test="${sessionScope.locale == 'locale_ru_RU'}">
+			<form action="controller" method="POST" class="navbar-form navbar-right">
+				<input type="hidden" name="action" value="changelocale">
 				<button type="submit" name="lang" value="en" class="btn btn-default"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></button>
-			</c:if>
 			</form>
 		</div>
 	</div>
 </nav>
+<%-- Alert area --%>
+<c:if test="${param.action == 'newuser'}" >
+	<c:set var="alertMessage" value="messages.register.success" />
+	<c:set var="alertColor" value="alert-success" />
+</c:if>
+<c:if test="${param.action == 'login'}" >
+	<c:set var="alertMessage" value="messages.login.success" />
+	<c:set var="alertColor" value="alert-success" />
+</c:if>
+<c:if test="${param.action == 'logout'}" >
+	<c:set var="alertMessage" value="messages.logout.success" />
+	<c:set var="alertColor" value="alert-warning" />
+</c:if>
+<c:if test="${param.action == 'wronglogin'}" >
+	<c:set var="alertMessage" value="login.wrong.pass" />
+	<c:set var="alertColor" value="alert-danger" />
+</c:if>
+<c:if test="${not empty alertMessage}" >
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="alert ${alertColor} alert-dismissible fade in" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<fmt:message key="${alertMessage}"/>
+			</div>
+		</div>
+	</div>
+</div>
+</c:if>

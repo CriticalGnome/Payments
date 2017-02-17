@@ -2,12 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<c:if test="${param.lang == 'en'}" >
-	<c:set var="locale" value="locale_en_US" scope="session" />
-</c:if>
-<c:if test="${param.lang == 'ru'}" >
-	<c:set var="locale" value="locale_ru_RU" scope="session" />
-</c:if>
 <%@ include file="inc/uselocale.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -21,37 +15,7 @@
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
-<%-- Alert area --%>
-<c:if test="${param.action == 'newuser'}" >
-	<c:set var="alertMessage" value="messages.register.success" />
-	<c:set var="alertColor" value="alert-success" />
-</c:if>
-<c:if test="${param.action == 'login'}" >
-	<c:set var="alertMessage" value="messages.login.success" />
-	<c:set var="alertColor" value="alert-success" />
-</c:if>
-<c:if test="${param.action == 'logout'}" >
-	<c:set var="alertMessage" value="messages.logout.success" />
-	<c:set var="alertColor" value="alert-warning" />
-</c:if>
-<c:if test="${not empty param.lang}" >
-	<c:set var="alertMessage" value="messages.lang.change" />
-	<c:set var="alertColor" value="alert-info" />
-</c:if>
-<c:if test="${not empty alertMessage}" >
-<div class="container">
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<div class="alert ${alertColor} alert-dismissible fade in" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<fmt:message key="${alertMessage}"/>
-			</div>
-		</div>
-	</div>
-</div>
-</c:if>
+<%-- Main page area --%>
 <div class="jumbotron" style="background: url(images/jumbo_bg.jpg) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; color: white;">
 	<div class="container">
 		<h1 class="placeholder" style="text-shadow: black 0.1em 0.1em 0.1em;"><fmt:message key="jumbotron.header" /></h1>

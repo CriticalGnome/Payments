@@ -1,4 +1,4 @@
-package com.criticalgnome.payments.actions.account;
+package com.criticalgnome.payments.actions.payment;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -24,6 +24,10 @@ public class ActionSendFunds implements Action {
 		int toAccount = Integer.parseInt(request.getParameter("toAccount"));
 		int amount = Integer.parseInt(request.getParameter("amount"));
 		String comment = request.getParameter("comment");
+		if (amount <= 0) {
+			page = "error.jsp?reason=Illegal Value";
+			return page;
+		}
 		try {
 			PaymentDAO.getInstance().makePayment(fromAccount, toAccount, amount, comment);
 		} catch (SQLException e) {
