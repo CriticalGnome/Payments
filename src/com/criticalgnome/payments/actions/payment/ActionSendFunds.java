@@ -39,11 +39,11 @@ public class ActionSendFunds implements Action {
 		String comment = request.getParameter("comment");
 		try {
 			PaymentDAO.getInstance().makePayment(fromAccount, toAccount, amount, comment);
+			page = "controller?action=userarea";
 		} catch (SQLException e) {
 			logger.log(Level.FATAL, "SQL Exception");
 			page = "error.jsp?reason=SQL Exception";
 		}
-		page = "controller?action=userarea";
 		return page;
 	}
 
