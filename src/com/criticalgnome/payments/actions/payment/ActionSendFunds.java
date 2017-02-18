@@ -24,14 +24,19 @@ public class ActionSendFunds implements Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = null;
+		if (request.getParameter("toAccount") == null) {
+			page = "error.jsp?reason=No user selected";
+			return page;
+		}
+		if (Integer.parseInt(request.getParameter("amount")) <= 0) {
+			page = "error.jsp?reason=Illegal Value";
+			return page;
+		}
+		System.out.println(request.getParameter("toAccount"));
 		int fromAccount = Integer.parseInt(request.getParameter("fromAccount"));
 		int toAccount = Integer.parseInt(request.getParameter("toAccount"));
 		int amount = Integer.parseInt(request.getParameter("amount"));
 		String comment = request.getParameter("comment");
-		if (amount <= 0) {
-			page = "error.jsp?reason=Illegal Value";
-			return page;
-		}
 		try {
 			PaymentDAO.getInstance().makePayment(fromAccount, toAccount, amount, comment);
 		} catch (SQLException e) {
