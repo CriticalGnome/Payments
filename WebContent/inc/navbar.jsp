@@ -12,6 +12,9 @@
 	<c:when test="${ pageContext.request.servletPath == '/userarea.jsp' }">
 		<c:set var="userareaClass" value="active" />
 	</c:when>
+	<c:when test="${ pageContext.request.servletPath == '/payments.jsp' }">
+		<c:set var="paymentsClass" value="active" />
+	</c:when>
 	<c:when test="${ pageContext.request.servletPath == '/adminarea.jsp' }">
 		<c:set var="adminareaClass" value="active" />
 	</c:when>
