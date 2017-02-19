@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
 <project name="My Project" default="help" basedir=".">
 	<!-- Define the properties used by the build -->
 	<property name="app.name"      value="Payments"/>
