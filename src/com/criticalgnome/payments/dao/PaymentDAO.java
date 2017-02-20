@@ -76,8 +76,7 @@ public class PaymentDAO {
 		stmt.setInt(3, fromAccount);
 		stmt.setInt(4, toAccount);
 		stmt.executeUpdate();
-		con.close();
-		stmt.close();
+		ConnectionPool.getInstance().releaseConnection(con);
 		logger.log(Level.INFO, "Payment from {} to {} amount {} ({})", fromAccount, toAccount, amount, comment);
 	}
 	
@@ -109,9 +108,7 @@ public class PaymentDAO {
 					.build();
 			payments.add(payment);
 		}
-		con.close();
-		stmt.close();
-		rs.close();
+		ConnectionPool.getInstance().releaseConnection(con);
 		return payments;
 	}
 	

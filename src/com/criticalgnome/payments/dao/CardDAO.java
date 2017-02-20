@@ -71,9 +71,7 @@ public class CardDAO {
 					.build();
 			cards.add(card);
 		}
-		con.close();
-		stmt.close();
-		rs.close();
+		ConnectionPool.getInstance().releaseConnection(con);
 		return cards;
 	}
 	
@@ -95,6 +93,7 @@ public class CardDAO {
 		con.close();
 		stmt.close();
 		logger.log(Level.INFO, "Card [{}] created for Account id={}", card.getNumber(), accountId);
+		ConnectionPool.getInstance().releaseConnection(con);
 	}
 
 }

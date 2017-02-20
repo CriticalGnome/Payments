@@ -45,6 +45,7 @@ public class ActionUserarea implements Action {
 			availableAccounts = AccountDAO.getInstance().getAllAvailableAccounts();
 		} catch (SQLException e) {
 			logger.log(Level.FATAL, "SQL Exception");
+			return "error.jsp?reason=SQL Exception";
 		}
 		request.setAttribute("user", user);
 		request.setAttribute("account", account);

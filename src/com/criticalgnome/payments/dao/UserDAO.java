@@ -73,9 +73,7 @@ public class UserDAO {
 					.role(rs.getString("role"))
 					.build();
 		}
-		con.close();
-		stmt.close();
-		rs.close();
+		ConnectionPool.getInstance().releaseConnection(con);
 		return user;
 	}
 
@@ -95,9 +93,7 @@ public class UserDAO {
 		if (rs.next()) {
 			id = rs.getInt("id");
 		}
-		con.close();
-		stmt.close();
-		rs.close();
+		ConnectionPool.getInstance().releaseConnection(con);
 		return id;
 	}
 
@@ -127,9 +123,7 @@ public class UserDAO {
 					.role(rs.getString("role"))
 					.build();
 		}
-		con.close();
-		stmt.close();
-		rs.close();
+		ConnectionPool.getInstance().releaseConnection(con);
 		return user;
 	}
 
@@ -150,9 +144,8 @@ public class UserDAO {
 		stmt.setString(3, email);
 		stmt.setString(4, password);
 		stmt.executeUpdate();
-		con.close();
-		stmt.close();
 		logger.log(Level.INFO, "Add new User: {} {}, {}", firstName, lastName, email);
+		ConnectionPool.getInstance().releaseConnection(con);
 	}
 
 	/**
@@ -170,9 +163,8 @@ public class UserDAO {
 		stmt.setString(2, lastName);
 		stmt.setInt(3, id);
 		stmt.executeUpdate();
-		con.close();
-		stmt.close();
 		logger.log(Level.INFO, "Update User First and Last Names [id={}]: {} {}", id, firstName, lastName);
+		ConnectionPool.getInstance().releaseConnection(con);
 	}
 
 }

@@ -19,6 +19,7 @@
 					<option><fmt:message key="footer.language" /></option>
 					<option value="default">English</option>
 					<option value="ru">Русский</option>
+					<option value="by">Беларуская</option>
 				</select>
 			</form>
 		</div>

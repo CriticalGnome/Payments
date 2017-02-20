@@ -31,6 +31,7 @@ public class ActionAdminarea implements Action {
 			blockedAccounts = AccountDAO.getInstance().getBlockedAccounts();
 		} catch (SQLException e) {
 			logger.log(Level.FATAL, "SQL Exception");
+			return "error.jsp?reason=SQL Exception";
 		}
 		request.setAttribute("blockedAccounts", blockedAccounts);
 		request.getRequestDispatcher("adminarea.jsp").forward(request, response);

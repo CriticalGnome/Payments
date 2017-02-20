@@ -78,9 +78,7 @@ public class AccountDAO {
 					.comment(rs.getString("comment"))
 					.build();
 		}
-		con.close();
-		stmt.close();
-		rs.close();
+		ConnectionPool.getInstance().releaseConnection(con);
 		return account;
 	}
 
@@ -97,9 +95,8 @@ public class AccountDAO {
 		stmt.setInt(1, amount);
 		stmt.setInt(2, id);
 		stmt.executeUpdate();
-		con.close();
-		stmt.close();
 		logger.log(Level.INFO, "User [id={}] has new amount: {}", id, amount);
+		ConnectionPool.getInstance().releaseConnection(con);
 	}
 
 	/**
@@ -113,9 +110,8 @@ public class AccountDAO {
 		stmt = con.prepareStatement(BLOCK_ACCOUNT_WITH_USER_ID);
 		stmt.setInt(1, id);
 		stmt.executeUpdate();
-		con.close();
-		stmt.close();
 		logger.log(Level.INFO, "User [id={}] block own account", id);
+		ConnectionPool.getInstance().releaseConnection(con);
 	}
 	
 	/**
@@ -129,9 +125,8 @@ public class AccountDAO {
 		stmt = con.prepareStatement(UNBLOCK_ACCOUNT_WITH_ID);
 		stmt.setInt(1, id);
 		stmt.executeUpdate();
-		con.close();
-		stmt.close();
 		logger.log(Level.INFO, "Administrator unblock account {}", id);
+		ConnectionPool.getInstance().releaseConnection(con);
 	}
 	
 	/**
@@ -156,9 +151,7 @@ public class AccountDAO {
 					.build();
 			blockedAccounts.add(account);
 		}
-		con.close();
-		stmt.close();
-		rs.close();
+		ConnectionPool.getInstance().releaseConnection(con);
 		return blockedAccounts;
 	}
 	
@@ -182,9 +175,7 @@ public class AccountDAO {
 					.build();
 			availableAccounts.add(account);
 		}
-		con.close();
-		stmt.close();
-		rs.close();
+		ConnectionPool.getInstance().releaseConnection(con);
 		return availableAccounts;
 	}
 	
@@ -202,9 +193,7 @@ public class AccountDAO {
 		if (rs.next()) {
 			maxNumber = rs.getInt("max(number)");
 		}
-		con.close();
-		stmt.close();
-		rs.close();
+		ConnectionPool.getInstance().releaseConnection(con);
 		return maxNumber;
 	}
 	
@@ -221,8 +210,7 @@ public class AccountDAO {
 		stmt.setInt(1, number);
 		stmt.setInt(2, userID);
 		stmt.executeUpdate();
-		con.close();
-		stmt.close();
+		ConnectionPool.getInstance().releaseConnection(con);
 		logger.log(Level.INFO, "Create account ({}) fo new user [id={}]", number, userID);
 	}
 	

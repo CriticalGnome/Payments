@@ -37,12 +37,14 @@ public class ActionGetPayments implements Action {
 			account = AccountDAO.getInstance().getAccount(userID);
 		} catch (SQLException e1) {
 			logger.log(Level.FATAL, "SQL Exception");
+			response.sendRedirect("error.jsp?reason=SQL Exception");
 		}
 		List<Payment> payments = new ArrayList<Payment>();
 		try {
 			payments = PaymentDAO.getInstance().getPayments(account.getId());
 		} catch (SQLException e2) {
 			logger.log(Level.FATAL, "SQL Exception");
+			response.sendRedirect("error.jsp?reason=SQL Exception");
 		}
 		int maxRecords = Integer.parseInt(ConfigParser.getValue("paymentslistmaxrecords"));
 		request.setAttribute("accountID", account.getId());
