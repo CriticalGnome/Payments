@@ -22,6 +22,7 @@ public class CardDAO {
 	
 	private static final String SELECT_FROM_CREDIT_CARD_WITH_USER_ID = "SELECT credit_card.id, credit_card.number AS number, credit_card.expiration_month AS exp_month, credit_card.expiration_year AS exp_year, credit_card.comment from account, credit_card WHERE account.client_id = ? AND account.id = credit_card.account_id;";
 	private static final String ADD_NEW_CARD = "INSERT INTO credit_card (number, expiration_month, expiration_year, account_id) VALUES (?, ?, ?, ?);";
+	
 	private static volatile CardDAO instance;
 	private static final Logger logger = LogManager.getLogger(CardDAO.class);
 	

@@ -18,9 +18,9 @@ import com.criticalgnome.payments.utils.ConfigParser;
  */
 public class ConnectionPool {
 
-	private Logger logger = LogManager.getLogger(ConnectionPool.class);
+	private static volatile ConnectionPool instance;
+	private static final Logger logger = LogManager.getLogger(ConnectionPool.class);
 
-	private static ConnectionPool instance;
 	private BlockingQueue<Connection> queue;
     private String url;
     private String user;

@@ -23,6 +23,7 @@ public class UserDAO {
 	private static final String SELECT_FROM_USERS_WITH_EMAIL_AND_PASSWORD = "SELECT * FROM users WHERE email = ? AND password = ?;";
 	private static final String UPDATE_FIRST_AND_LAST_NAMES = "UPDATE users SET first_name = ?, last_name = ? WHERE id = ?;";
 	private static final String GET_USER_ID_BY_EMAIL = "SELECT id FROM users WHERE email = ?;";
+	
 	private static volatile UserDAO instance;
 	private static final Logger logger = LogManager.getLogger(UserDAO.class);
 	
