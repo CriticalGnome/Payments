@@ -46,14 +46,10 @@ public class ActionUserarea implements Action {
 		} catch (SQLException e) {
 			logger.log(Level.FATAL, "SQL Exception");
 		}
-		int cardsCount = cards.size();
-		int availableAccountsCount = availableAccounts.size();
 		request.setAttribute("user", user);
 		request.setAttribute("account", account);
 		request.setAttribute("cards", cards);
-		request.setAttribute("cardsCount", cardsCount);
 		request.setAttribute("availableAccounts", availableAccounts);
-		request.setAttribute("availableAccountsCount", availableAccountsCount);
 		request.getRequestDispatcher("userarea.jsp").forward(request, response);
 		
 		return null;

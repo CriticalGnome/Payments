@@ -9,12 +9,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/default.css" rel="stylesheet" type="text/css">
-<title><fmt:message key="title.login" /></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/default.css" rel="stylesheet" type="text/css">
+	<title><fmt:message key="title.login" /></title>
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>

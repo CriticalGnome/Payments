@@ -6,18 +6,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/default.css" rel="stylesheet" type="text/css">
-<title><fmt:message key="title.about" /></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/default.css" rel="stylesheet" type="text/css">
+	<title><fmt:message key="title.about" /></title>
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
 <div class="container">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-md-12">
 			<h2><fmt:message key="about.header" /></h2>
 			<blockquote><fmt:message key="about.quote" /></blockquote>
 			
@@ -43,7 +44,7 @@
 				</tr>
 			</table>
 		</div>
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-md-12">
 			<p><fmt:message key="about.line3" /></p>
 			<p><fmt:message key="about.line4" /></p>
 			<p><fmt:message key="about.line6" /><code>WebContent/WEB-INF/classes/config.properties</code>:</p>
@@ -60,7 +61,7 @@
 			<small># <fmt:message key="about.comment6" /></small><br />
 			<var>paymentslistmaxrecords</var> = <code>100</code><br />
 		</div>
-		<div class="col-md-10 col-md-offset-1 text-right">
+		<div class="col-md-12 text-right">
 			<br>
 			<address>
 				<strong><fmt:message key="about.author" /></strong><br>

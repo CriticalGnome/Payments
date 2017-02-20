@@ -15,7 +15,7 @@
 		<div class="col-md-2">
 			<form action="controller" method="POST">
 				<input type="hidden" name="action" value="changelocale"> 
-				<select name="locale" class="form-control" onchange="if (this.selectedIndex) this.form.submit ()">
+				<select name="locale" class="form-control input-sm" onchange="if (this.selectedIndex) this.form.submit ()">
 					<option><fmt:message key="footer.language" /></option>
 					<option value="default">English</option>
 					<option value="ru">Русский</option>
@@ -26,4 +26,4 @@
 </div>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.min.js"></script>

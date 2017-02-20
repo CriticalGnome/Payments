@@ -33,7 +33,6 @@ public class ActionAdminarea implements Action {
 			logger.log(Level.FATAL, "SQL Exception");
 		}
 		request.setAttribute("blockedAccounts", blockedAccounts);
-		request.setAttribute("blockedAccountsCount", blockedAccounts.size());
 		request.getRequestDispatcher("adminarea.jsp").forward(request, response);
 		
 		return null;

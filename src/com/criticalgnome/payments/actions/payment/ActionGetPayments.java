@@ -44,12 +44,10 @@ public class ActionGetPayments implements Action {
 		} catch (SQLException e2) {
 			logger.log(Level.FATAL, "SQL Exception");
 		}
-		int paymentsCount = payments.size();
 		int maxRecords = Integer.parseInt(ConfigParser.getValue("paymentslistmaxrecords"));
 		request.setAttribute("accountID", account.getId());
 		request.setAttribute("maxRecords", maxRecords);
 		request.setAttribute("payments", payments);
-		request.setAttribute("paymentsCount", paymentsCount);
 		request.getRequestDispatcher("payments.jsp").forward(request, response);
 		
 		return null;

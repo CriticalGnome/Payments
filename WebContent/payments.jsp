@@ -9,12 +9,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/default.css" rel="stylesheet" type="text/css">
-<title><fmt:message key="title.userarea" /></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/default.css" rel="stylesheet" type="text/css">
+	<title><fmt:message key="title.userarea" /></title>
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
@@ -32,20 +33,20 @@
 					<th><fmt:message key="userarea.payments.amount" /></th>
 					<th><fmt:message key="userarea.payments.comment" /></th>
 				</tr>
-				<c:forEach var="i" begin="1" end="${paymentsCount}">
+				<c:forEach items="${payments}" var="item" varStatus="status">
 				<tr>
-					<td>${i}</td>
-					<td>${payments[i-1].dateTime}</td>
-					<c:if test="${payments[i-1].accountId == accountID}">
+					<td>${status.count}</td>
+					<td>${item.dateTime}</td>
+					<c:if test="${item.accountId == accountID}">
 						<td><span class="label label-danger"><fmt:message key="userarea.payments.to" /></span></td>
 					</c:if>
-					<c:if test="${payments[i-1].accountId != accountID}">
+					<c:if test="${item.accountId != accountID}">
 						<td><span class="label label-success"><fmt:message key="userarea.payments.from" /></span></td>
 					</c:if>
-					<td>${payments[i-1].number}</td>
-					<td>${payments[i-1].firstName} ${payments[i-1].lastName}</td>
-					<td>${payments[i-1].amount}</td>
-					<td>${payments[i-1].comment}</td>
+					<td>${item.number}</td>
+					<td>${item.firstName} ${item.lastName}</td>
+					<td>${item.amount}</td>
+					<td>${item.comment}</td>
 				</tr>
 				</c:forEach>
 			</table>

@@ -6,12 +6,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/default.css" rel="stylesheet" type="text/css">
-<title><fmt:message key="title.adminarea" /></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/default.css" rel="stylesheet" type="text/css">
+	<title><fmt:message key="title.adminarea" /></title>
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
@@ -29,18 +30,18 @@
 				<th><fmt:message key="adminarea.role" /></th>
 				<th><fmt:message key="adminarea.function" /></th>
 			</tr>
-			<c:forEach var="i" begin="1" end="${blockedAccountsCount}">
+			<c:forEach items="${blockedAccounts}" var="item" varStatus="status">
 				<tr>
-					<td>${i}</td>
-					<td>${blockedAccounts[i-1].id}</td>
-					<td>${blockedAccounts[i-1].number}</td>
-					<td>${blockedAccounts[i-1].amount}</td>
-					<td>${blockedAccounts[i-1].firstName} ${blockedAccounts[i-1].lastName}</td>
-					<td>${blockedAccounts[i-1].role}</td>
+					<td>${status.count}</td>
+					<td>${item.id}</td>
+					<td>${item.number}</td>
+					<td>${item.amount}</td>
+					<td>${item.firstName} ${item.lastName}</td>
+					<td>${item.role}</td>
 					<td>
 						<form action="controller" method="POST">
 						<input type="hidden" name="action" value="unBlockAccount">
-						<input type="hidden" name="id" value="${blockedAccounts[i-1].id}">
+						<input type="hidden" name="id" value="${item.id}">
 						<button type="submit" class="btn btn-success btn-xs"><fmt:message key="adminarea.button.unblock" /></button>
 						</form>
 					</td>

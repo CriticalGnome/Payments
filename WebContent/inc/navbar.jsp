@@ -1,7 +1,8 @@
-<%@page import="org.apache.catalina.startup.HomesUserDatabase"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<%-- Set class for current page link to "active" --%>
 <c:choose>
 	<c:when test="${ pageContext.request.servletPath == '/index.jsp' }">
 		<c:set var="homeClass" value="active" />
@@ -21,6 +22,7 @@
 	<c:otherwise>
 	</c:otherwise>
 </c:choose>
+<%-- Navigation bar area --%>
 <nav class="navbar navbar-default">
 	<div class="container">
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

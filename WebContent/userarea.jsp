@@ -9,12 +9,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/default.css" rel="stylesheet" type="text/css">
-<title><fmt:message key="title.userarea" /></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/default.css" rel="stylesheet" type="text/css">
+	<title><fmt:message key="title.userarea" /></title>
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
@@ -103,11 +104,11 @@
 					<th>NUMBER</th>
 					<th>EXP</th>
 				</tr>
-				<c:forEach var="i" begin="1" end="${cardsCount}">
+				<c:forEach items="${cards}" var="item" varStatus="status">
 					<tr>
-						<td>${i}</td>
-						<td>${cards[i-1].number}</td>
-						<td>${cards[i-1].expMonth}/${cards[i-1].expYear}</td>
+						<td>${status.count}</td>
+						<td>${item.number}</td>
+						<td>${item.expMonth}/${item.expYear}</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -157,9 +158,9 @@
 					<div class="form-group">
 						<label for="acountId"><fmt:message key="userarea.dest" /></label>
 						<select name="toAccount" name="accountId" class="form-control" size="5">
-							<c:forEach var="i" begin="1" end="${availableAccountsCount}">
-								<c:if test="${availableAccounts[i-1].id != account.id}">
-									<option value="${availableAccounts[i-1].id}">[${availableAccounts[i-1].number}] ${availableAccounts[i-1].firstName} ${availableAccounts[i-1].lastName}</option>
+							<c:forEach items="${availableAccounts}" var="item">
+								<c:if test="${item.id != account.id}">
+									<option value="${item.id}">[${item.number}] ${item.firstName} ${item.lastName}</option>
 								</c:if>
 							</c:forEach>
 						</select>
