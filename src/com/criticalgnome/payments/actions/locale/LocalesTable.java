@@ -1,4 +1,4 @@
-package com.criticalgnome.payments.locale;
+package com.criticalgnome.payments.actions.locale;
 
 public enum LocalesTable {
 	DEFAULT {{ locale="locale_en_US"; }},

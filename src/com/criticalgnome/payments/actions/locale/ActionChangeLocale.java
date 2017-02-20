@@ -1,8 +1,9 @@
-package com.criticalgnome.payments.locale;
+package com.criticalgnome.payments.actions.locale;
 
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,8 +22,9 @@ public class ActionChangeLocale implements Action {
 		HttpSession session = request.getSession();
 		String locale = LocaleFactory.getLocale(request.getParameter("locale"));
 		session.setAttribute("locale", locale);
-//		Cookie c = new Cookie("locale", locale);
-//		c.setMaxAge(60 * 60 * 24 * 30);
+		Cookie c = new Cookie("locale", locale);
+		c.setMaxAge(60 * 60 * 24 * 30);
+		response.addCookie(c);
 		return request.getHeader("referer");
 	}
 

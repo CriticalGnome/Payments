@@ -1,4 +1,4 @@
-package com.criticalgnome.payments.locale;
+package com.criticalgnome.payments.actions.locale;
 
 /**
  * @author CriticalGnome

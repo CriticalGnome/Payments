@@ -106,9 +106,9 @@
 				</tr>
 				<c:forEach items="${cards}" var="item" varStatus="status">
 					<tr>
-						<td>${status.count}</td>
-						<td>${item.number}</td>
-						<td>${item.expMonth}/${item.expYear}</td>
+						<td><c:out value="${status.count}" /></td>
+						<td><c:out value="${item.number}" /></td>
+						<td><c:out value="${item.expMonth}" />/<c:out value="${item.expYear}" /></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -160,7 +160,7 @@
 						<select name="toAccount" name="accountId" class="form-control" size="5">
 							<c:forEach items="${availableAccounts}" var="item">
 								<c:if test="${item.id != account.id}">
-									<option value="${item.id}">[${item.number}] ${item.firstName} ${item.lastName}</option>
+									<option value="${item.id}">[<c:out value="${item.number}" />] <c:out value="${item.firstName}" /> <c:out value="${item.lastName}" /></option>
 								</c:if>
 							</c:forEach>
 						</select>

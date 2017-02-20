@@ -32,12 +32,12 @@
 			</tr>
 			<c:forEach items="${blockedAccounts}" var="item" varStatus="status">
 				<tr>
-					<td>${status.count}</td>
-					<td>${item.id}</td>
-					<td>${item.number}</td>
-					<td>${item.amount}</td>
-					<td>${item.firstName} ${item.lastName}</td>
-					<td>${item.role}</td>
+					<td><c:out value="${status.count}" /></td>
+					<td><c:out value="${item.id}" /></td>
+					<td><c:out value="${item.number}" /></td>
+					<td><c:out value="${item.amount}" /></td>
+					<td><c:out value="${item.firstName}" /> <c:out value="${item.lastName}" /></td>
+					<td><c:out value="${item.role}" /></td>
 					<td>
 						<form action="controller" method="POST">
 						<input type="hidden" name="action" value="unBlockAccount">

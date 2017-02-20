@@ -10,7 +10,7 @@
 
 		</div>
 		<div class="col-md-8 text-center">
-			site by <a href="mailto:web3oha@gmail.com">Web3OHA</a>
+			<a href="mailto:web3oha@gmail.com">Web3OHA</a> &copy; 2017
 		</div>
 		<div class="col-md-2">
 			<form action="controller" method="POST">

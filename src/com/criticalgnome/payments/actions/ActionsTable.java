@@ -4,6 +4,7 @@ import com.criticalgnome.payments.actions.account.ActionBlockAccount;
 import com.criticalgnome.payments.actions.account.ActionUpdateAmount;
 import com.criticalgnome.payments.actions.admin.ActionAdminarea;
 import com.criticalgnome.payments.actions.admin.ActionUnBlockAccount;
+import com.criticalgnome.payments.actions.locale.ActionChangeLocale;
 import com.criticalgnome.payments.actions.payment.ActionSendFunds;
 import com.criticalgnome.payments.actions.payment.ActionGetPayments;
 import com.criticalgnome.payments.actions.user.ActionLogin;
@@ -11,7 +12,6 @@ import com.criticalgnome.payments.actions.user.ActionLogout;
 import com.criticalgnome.payments.actions.user.ActionRegister;
 import com.criticalgnome.payments.actions.user.ActionUpdateUserName;
 import com.criticalgnome.payments.actions.user.ActionUserarea;
-import com.criticalgnome.payments.locale.ActionChangeLocale;
 
 public enum ActionsTable {
 	LOGIN {{ this.action = new ActionLogin(); }},

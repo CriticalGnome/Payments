@@ -35,18 +35,18 @@
 				</tr>
 				<c:forEach items="${payments}" var="item" varStatus="status">
 				<tr>
-					<td>${status.count}</td>
-					<td>${item.dateTime}</td>
+					<td><c:out value="${status.count}" /></td>
+					<td><c:out value="${item.dateTime}" /></td>
 					<c:if test="${item.accountId == accountID}">
 						<td><span class="label label-danger"><fmt:message key="userarea.payments.to" /></span></td>
 					</c:if>
 					<c:if test="${item.accountId != accountID}">
 						<td><span class="label label-success"><fmt:message key="userarea.payments.from" /></span></td>
 					</c:if>
-					<td>${item.number}</td>
-					<td>${item.firstName} ${item.lastName}</td>
-					<td>${item.amount}</td>
-					<td>${item.comment}</td>
+					<td><c:out value="${item.number}" /></td>
+					<td><c:out value="${item.firstName} ${item.lastName}" /></td>
+					<td><c:out value="${item.amount}" /></td>
+					<td><c:out value="${item.comment}" /></td>
 				</tr>
 				</c:forEach>
 			</table>
