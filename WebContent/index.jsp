@@ -11,14 +11,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/default.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
 	<title><fmt:message key="title.index" /></title>
 </head>
 <body>
 <%@ include file="inc/navbar.jsp"%>
 <%-- Main page area --%>
+<div class="container">
 <div class="jumbotron" style="background: url(images/jumbo_bg.jpg) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; color: white;">
-	<div class="container">
+	
 		<h1 class="placeholder" style="text-shadow: black 0.1em 0.1em 0.1em;"><fmt:message key="jumbotron.header" /></h1>
 		<p style="text-shadow: black 0.1em 0.1em 0.1em;"><fmt:message key="jumbotron.text" /></p>
 		<p>

@@ -6,13 +6,13 @@
 <footer class="navbar-bottom panel-footer">
 <div class="container">
 	<div class="row">
-		<div class="col-md-2">
+		<div class="col-md-2 text-left">
 
 		</div>
 		<div class="col-md-8 text-center">
 			<a href="mailto:web3oha@gmail.com">Web3OHA</a> &copy; 2017
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-2 text-right">
 			<form action="controller" method="POST">
 				<input type="hidden" name="action" value="changelocale"> 
 				<select name="locale" class="form-control input-sm" onchange="if (this.selectedIndex) this.form.submit ()">
