@@ -48,10 +48,6 @@
 					<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<fmt:message key="nav.button.logout" /></button>
 				</form>
 			</c:if>
-			<form action="controller" method="POST" class="navbar-form navbar-right">
-				<input type="hidden" name="action" value="changelocale">
-				<button type="submit" name="lang" value="en" class="btn btn-default"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></button>
-			</form>
 		</div>
 	</div>
 </nav>

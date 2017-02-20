@@ -45,8 +45,7 @@
 		</div>
 		<div class="col-md-10 col-md-offset-1">
 			<p><fmt:message key="about.line3" /></p>
-			<p><fmt:message key="about.line4" /> <button type="button" class="btn btn-default btn-xs">
-  			<span class="glyphicon glyphicon-globe" aria-hidden="true"></span></button> <fmt:message key="about.line5" /></p>
+			<p><fmt:message key="about.line4" /></p>
 			<p><fmt:message key="about.line6" /><code>WebContent/WEB-INF/classes/config.properties</code>:</p>
 			<small># <fmt:message key="about.comment1" /></small><br />
 			<var>dbdriver</var> = <code>com.mysql.jdbc.Driver</code><br />

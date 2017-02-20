@@ -11,6 +11,7 @@ import com.criticalgnome.payments.actions.user.ActionLogout;
 import com.criticalgnome.payments.actions.user.ActionRegister;
 import com.criticalgnome.payments.actions.user.ActionUpdateUserName;
 import com.criticalgnome.payments.actions.user.ActionUserarea;
+import com.criticalgnome.payments.locale.ActionChangeLocale;
 
 public enum ActionsTable {
 	LOGIN {{ this.action = new ActionLogin(); }},
