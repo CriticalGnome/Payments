@@ -55,7 +55,7 @@ public class ConnectionPool {
      * Return connection
      * @return
      */
-    public synchronized Connection getConnection() {
+    public synchronized Connection getConnection() throws SQLException {
     	Connection connection = null;
     	if (queue.isEmpty()) {
     		createConnection();
@@ -79,7 +79,7 @@ public class ConnectionPool {
     /**
      * Create new connection
      */
-    public void createConnection() {
+    public void createConnection() throws SQLException {
     	if (queue.size() < maxConnections) {
     		try {
 				Class.forName(driver);
@@ -89,7 +89,7 @@ public class ConnectionPool {
 			} catch (ClassNotFoundException e) {
 				logger.log(Level.FATAL, "Unexpected internal error");
 			} catch (SQLException e) {
-				logger.log(Level.FATAL, "Can't access to database");
+				throw e;
 			} catch (InterruptedException e) {
 				logger.log(Level.FATAL, "ConnectionPool Queue error");
 			}
