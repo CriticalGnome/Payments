@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.criticalgnome.payments.actions.Action;
 
 /**
- * Change current locale from 'ru' to 'en' and vice versa
+ * Change current locale
  * @author CriticalGnome
  *
  */
