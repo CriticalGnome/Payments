@@ -1,0 +1,11 @@
+com.criticalgnome.payments.actions
+com.criticalgnome.payments.actions.account
+com.criticalgnome.payments.actions.admin
+com.criticalgnome.payments.actions.locale
+com.criticalgnome.payments.actions.payment
+com.criticalgnome.payments.actions.user
+com.criticalgnome.payments.beans
+com.criticalgnome.payments.controller
+com.criticalgnome.payments.dao
+com.criticalgnome.payments.filters
+com.criticalgnome.payments.utils
